@@ -1,0 +1,281 @@
+/* 🔹 Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* 🔹 Corpo da Página */
+body {
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+
+/* 🔹 Vídeo de Fundo */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(40%) blur(10px);
+}
+
+/* 🔹 Overlay para melhorar contraste */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+/* 🔹 Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00A3FF;
+}
+
+/* 🔹 Botão no Cabeçalho */
+.btn-header {
+    background: #007BFF;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-header:hover {
+    background: #0056b3;
+}
+
+/* 🔹 Seção Hero */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+/* 🔹 Estilização do Título e Texto */
+.hero h1 {
+    font-size: 3rem;
+    color: #00A3FF;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* 🔹 Botões */
+.btn {
+    display: inline-block;
+    background: #007BFF;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* 🔹 Seções */
+section {
+    padding: 50px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* 🔹 Lista de Tecnologia */
+.tech-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.tech-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(20, 20, 20, 0.8);
+    padding: 15px;
+    width: 50%;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.tech-list li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-list img {
+    width: 40px;
+    height: auto;
+}
+
+/* 🔹 Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* 🔹 Estilos do Modal de Cadastro */
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🔹 Conteúdo do Modal */
+.modal-content {
+    background: #1b1b1b;
+    padding: 30px;
+    width: 40%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 🔹 Fechar Modal */
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* 🔹 Título */
+.modal-content h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* 🔹 Formulário */
+.form-box {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.form-box label {
+    display: block;
+    font-size: 14px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* 🔹 Botão de Continuar */
+.btn {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* 🔹 Responsividade */
+@media screen and (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .tech-list li {
+        width: 80%;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}

@@ -1,55 +1,72 @@
 import streamlit as st
-import os
-import streamlit.components.v1 as components
+import webbrowser
 
-# Configuração inicial da página
-st.set_page_config(page_title="SingulAI - Plataforma Inteligente", layout="wide")
+# Redirecionar para a landing page ao iniciar
+webbrowser.open("landing.html")
 
-# Verificação de arquivos essenciais
-required_files = ["index.html", "style.css", "ai.png", "blockchain.png", "connectivity.png", "video3.mp4"]
+st.set_page_config(page_title="SingulAI - Servidor de Interações", layout="wide")
 
-missing_files = [file for file in required_files if not os.path.exists(file)]
+st.title("📊 Monitoramento do SingulAI")
+st.write("## 💡 Dados de Uso da Plataforma")
+import streamlit as st
+import pandas as pd
+import plotly.express as px
 
-if missing_files:
-    st.error(f"Erro: Os seguintes arquivos estão ausentes: {', '.join(missing_files)}")
-    st.stop()
+st.set_page_config(page_title="SingulAI - Servidor de Interações", layout="wide")
 
-# Carregar HTML
-def load_html():
-    with open("index.html", "r", encoding="utf-8") as f:
-        return f.read()
+# 🚀 Carregar dados (simulação de dados do SingulAI)
+csv_path = "dados_singulai.csv"
+df = pd.read_csv(csv_path)
 
-# Renderizar HTML no Streamlit
-components.html(load_html(), height=900, scrolling=True)
+# 🎯 Título do Painel
+st.title("📊 Monitoramento do SingulAI")
 
-# 🔥 Aplicar o CSS diretamente no Streamlit
-try:
-    with open("style.css", "r", encoding="utf-8") as css_file:
-        css_styles = f"<style>{css_file.read()}</style>"
-        st.markdown(css_styles, unsafe_allow_html=True)
-except Exception as e:
-    st.error(f"Erro ao carregar CSS: {e}")
+# 📌 Seção de Estatísticas Gerais
+st.write("## 💡 Dados de Uso da Plataforma")
+st.dataframe(df)
 
-# Exibir tecnologias usadas
-st.write("## 🌍 Tecnologias Usadas")
-col1, col2, col3 = st.columns(3)
-col1.image("ai.png", caption="Inteligência Artificial", width=180)
-col2.image("blockchain.png", caption="Blockchain", width=180)
-col3.image("connectivity.png", caption="Conectividade Global", width=180)
+st.write("## 📈 Estatísticas Gerais")
+col1, col2 = st.columns(2)
 
-# Exibir vídeo corretamente
-video_path = "video3.mp4"
-if os.path.exists(video_path):
-    st.video(video_path)
-else:
-    st.warning("⚠️ O vídeo não foi encontrado. Verifique o arquivo.")
+# 📊 Total de Registros
+col1.metric("📌 Total de Usuários Registrados", len(df))
 
-# Rodapé
+# 🔍 Principais Tecnologias Utilizadas
+st.write("### 🔥 Tecnologias Mais Utilizadas")
+fig_tecnologias = px.bar(df, x="Tecnologia", title="Uso por Tecnologia", color="Tecnologia")
+st.plotly_chart(fig_tecnologias, use_container_width=True)
+
+# 🌍 Distribuição de Usuários por Região
+st.write("### 🌎 Distribuição de Usuários por Região")
+fig_regioes = px.pie(df, names="Região", title="Regiões com Mais Usuários", hole=0.4)
+st.plotly_chart(fig_regioes, use_container_width=True)
+
+# 📡 Plataformas Mais Usadas
+st.write("### 💻 Plataformas Mais Utilizadas")
+fig_plataformas = px.bar(df, x="Plataforma", title="Plataformas Preferidas", color="Plataforma")
+st.plotly_chart(fig_plataformas, use_container_width=True)
+
+# ⏳ Tempo Médio de Atividade na Plataforma
+st.write("### ⏳ Média de Tempo de Atividade")
+fig_tempo = px.histogram(df, x="Tempo_Atividade", title="Distribuição do Tempo de Atividade", nbins=10)
+st.plotly_chart(fig_tempo, use_container_width=True)
+
+# 🤖 Interação com IA
+st.write("### 🤖 Interação com IA")
+fig_interacoes = px.line(df, x=df.index, y="Interação_AI", title="Evolução das Interações com IA")
+st.plotly_chart(fig_interacoes, use_container_width=True)
+
+# 🛡️ Conexão com Blockchain
+st.write("## 🔗 Blockchain e Registro de Mensagens")
+st.write("📌 **Total de Mensagens na Blockchain:** 1,250")
+st.write("🔐 **Contratos Inteligentes Ativos:** 5")
+
+# 📅 Atividades Recentes
+st.write("## 🏆 Últimas Atividades dos Usuários")
+st.table(df.tail(5))
+
+# 📍 Rodapé
 st.markdown(
-    """
-    <div style='text-align: center; margin-top: 50px;'>
-        <p style='font-size: 14px; color: #777;'>SingulAI © 2025 - Legado Digital Eterno</p>
-    </div>
-    """,
+    "<p style='text-align: center;'>SingulAI - Monitoramento Inteligente 🚀</p>",
     unsafe_allow_html=True
 )
