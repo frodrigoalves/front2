@@ -1,99 +1,114 @@
-/* Estilos Gerais */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* 🔹 Reset Global */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
 }
 
-/* Container do Formulário */
-.container {
+body {
+    background-color: #0A0A0A;
+    color: white;
+    text-align: center;
+}
+
+/* 🔹 Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(10, 10, 10, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* 🔹 Seção Tecnologia */
+.tech-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.tech-item {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 20px;
+    border-radius: 12px;
+    width: 30%;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.tech-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-item img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* 🔹 Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Caixa do Formulário */
-.form-box {
-    background: rgba(255, 255, 255, 0.1);
+.modal-content {
+    background-color: #141414;
     padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
-    width: 350px;
-    backdrop-filter: blur(10px);
-}
-
-.form-box h2 {
-    color: #00A3FF;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.form-box p {
-    color: #dcdcdc;
-    font-size: 14px;
-}
-
-/* Estilizando Labels */
-.form-box label {
-    display: block;
-    text-align: left;
-    color: white;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* Campos de Entrada */
-.form-box input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border: none;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    outline: none;
-    font-size: 14px;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-}
-
-.form-box input:focus {
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.3);
-}
-
-/* Placeholder */
-.form-box input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Botão */
-.btn {
-    background: #007BFF;
-    padding: 12px 20px;
     border-radius: 10px;
-    text-decoration: none;
+    width: 40%;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* 🔹 Botão */
+.btn {
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00A3FF, #0066CC);
     color: white;
-    display: inline-block;
-    width: 100%;
+    text-decoration: none;
+    transition: 0.3s;
     margin-top: 20px;
+    display: inline-block;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s;
 }
 
 .btn:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0px 4px 10px rgba(0, 163, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* 🔹 Responsividade */
+@media (max-width: 768px) {
+    .tech-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tech-item {
+        width: 80%;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
 }

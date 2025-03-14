@@ -27,7 +27,6 @@ header {
     z-index: 1000;
 }
 
-/* 🔹 Logo */
 .logo img {
     width: 100px;
     height: auto;
@@ -65,7 +64,6 @@ nav ul li a:hover {
     padding: 20px;
 }
 
-/* 🔹 Ajuste do tamanho do logo */
 .hero img {
     width: 40%;
     max-width: 300px;
@@ -127,6 +125,19 @@ nav ul li a:hover {
     width: 40%;
     text-align: center;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Efeito de animação no modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .modal-content h2 {
@@ -199,6 +210,17 @@ nav ul li a:hover {
 .dashboard-container p {
     font-size: 1.3rem;
     margin-top: 10px;
+}
+
+/* 🔹 Seção do Streamlit */
+#streamlit {
+    padding: 50px;
+    text-align: center;
+}
+
+#streamlit iframe {
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 /* 🔹 Rodapé */
