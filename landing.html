@@ -1,72 +1,109 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SingulAI - O Futuro é Agora</title>
-    <link rel="stylesheet" href="styleland.css">
-</head>
-<body>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
 
-    <!-- Vídeo de Fundo -->
-    <div class="background-video">
-        <video autoplay muted loop>
-            <source src="video3.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-    </div>
+/* BODY */
+body {
+    background-color: #0A0A0A;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
 
-    <!-- Cabeçalho -->
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="SingulAI">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#seguranca">Segurança</a></li>
-                <li><a href="index.html" class="btn-header">Acessar Plataforma</a></li>
-            </ul>
-        </nav>
-    </header>
+/* VIDEO DE FUNDO */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -2;
+}
 
-    <!-- Seção Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>O Futuro Não é uma Promessa, é um Legado</h1>
-            <p>Combinando Inteligência Artificial e Blockchain para criar um legado digital seguro e imutável.</p>
-            <a href="index.html" class="btn">Acesse a Plataforma</a>
-        </div>
-    </section>
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    <!-- Seção Sobre -->
-    <section id="sobre">
-        <h2>📌 O Que é a SingulAI?</h2>
-        <p>SingulAI é uma plataforma revolucionária que permite armazenar memórias, interações e transações na blockchain, garantindo autenticidade e imutabilidade.</p>
-    </section>
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(10, 10, 10, 0.7);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
 
-    <!-- Seção Tecnologia -->
-    <section id="tecnologia">
-        <h2>🚀 Tecnologia de Ponta</h2>
-        <ul class="tech-list">
-            <li><img src="ai.png" alt="Inteligência Artificial"> Inteligência Artificial Avançada</li>
-            <li><img src="blockchain.png" alt="Blockchain"> Blockchain para armazenamento imutável</li>
-            <li><img src="connectivity.png" alt="Segurança Digital"> Segurança Digital de Alto Nível</li>
-            <li><img src="connectivity.png" alt="Monitoramento e Estatísticas"> Plataforma de Monitoramento e Estatísticas</li>
-        </ul>
-    </section>
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+}
 
-    <!-- Seção Segurança -->
-    <section id="seguranca">
-        <h2>🔐 Segurança e Privacidade</h2>
-        <p>Seus dados são protegidos com criptografia de ponta e armazenados de forma descentralizada, garantindo total segurança.</p>
-    </section>
+.hero-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
 
-    <!-- Rodapé -->
-    <footer>
-        <p>© 2025 SingulAI - IA e Blockchain para um Futuro Seguro</p>
-    </footer>
+/* BOTÕES */
+.btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00A3FF, #0066CC);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
 
-</body>
-</html>
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* CANVAS THREE.JS */
+#bg-webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* SEÇÃO TECNOLOGIAS */
+.tech-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.tech-item {
+    text-align: center;
+    max-width: 280px;
+}
+
+.tech-item img {
+    width: 100px;
+    height: auto;
+}
