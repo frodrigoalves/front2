@@ -1,0 +1,114 @@
+/* 🔹 Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0A0A0A;
+    color: white;
+    text-align: center;
+}
+
+/* 🔹 Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(10, 10, 10, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* 🔹 Seção Tecnologia */
+.tech-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.tech-item {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 20px;
+    border-radius: 12px;
+    width: 30%;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.tech-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-item img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* 🔹 Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #141414;
+    padding: 30px;
+    border-radius: 10px;
+    width: 40%;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* 🔹 Botão */
+.btn {
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00A3FF, #0066CC);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-top: 20px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* 🔹 Responsividade */
+@media (max-width: 768px) {
+    .tech-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tech-item {
+        width: 80%;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+}

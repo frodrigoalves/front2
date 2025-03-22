@@ -1,0 +1,242 @@
+/* RESET GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* BODY */
+body {
+    background-color: #121212;
+    color: #f2f2f2;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+    background: #1e1e1e;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #4db8ff;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #4db8ff;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li button {
+    background: #4db8ff;
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+header nav ul li button:hover {
+    background: #008ecf;
+    color: #fff;
+}
+
+/* HERO SECTION */
+.hero {
+    padding: 60px 20px;
+    background: #1e1e1e;
+    border-bottom: 2px solid #4db8ff;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #4db8ff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* FORMULÁRIOS */
+.content-container {
+    margin: 20px auto;
+    max-width: 600px;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.content-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #4db8ff;
+}
+
+.content-container input[type="text"],
+.content-container textarea,
+.content-container input[type="number"],
+.content-container input[type="email"],
+.content-container input[type="password"],
+.content-container input[type="date"],
+.content-container input[type="file"] {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    background: #2e2e2e;
+    color: #f2f2f2;
+    border: 2px solid #4db8ff;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.content-container input:focus,
+.content-container textarea:focus {
+    border-color: #008ecf;
+    background: #333;
+}
+
+.content-container button {
+    padding: 12px 20px;
+    background: #4db8ff;
+    border: none;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.content-container button:hover {
+    background: #008ecf;
+    color: #fff;
+}
+
+/* NOTIFICAÇÕES E MENSAGENS */
+.notification {
+    background: rgba(61, 220, 132, 0.1);
+    color: #3ddc84;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #3ddc84;
+}
+
+.error-message {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #e74c3c;
+}
+
+/* TABELAS DE DADOS */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    border: 1px solid #4db8ff;
+    text-align: center;
+}
+
+.data-table th {
+    background: #2e2e2e;
+    color: #4db8ff;
+}
+
+.data-table td {
+    background: #1e1e1e;
+}
+
+/* LISTA DE MENSAGENS ENVIADAS */
+#messageList {
+    list-style: none;
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 0;
+}
+
+#messageList li {
+    background: #2e2e2e;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #f2f2f2;
+}
+
+/* BOTÕES DE AÇÃO */
+.action-button {
+    padding: 10px 18px;
+    background: #4db8ff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.action-button:hover {
+    background: #008ecf;
+    color: #fff;
+}
+
+/* RODAPÉ */
+footer {
+    padding: 20px;
+    background: #1e1e1e;
+    margin-top: 50px;
+    color: #b0b0b0;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .content-container {
+        width: 90%;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    button, .action-button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

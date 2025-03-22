@@ -24,9 +24,11 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-header h1 {
-    font-size: 2rem;
-    color: #007bff;
+/* LOGO NOVA */
+.logo-container .logo {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
 }
 
 header nav ul {
