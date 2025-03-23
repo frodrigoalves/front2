@@ -142,7 +142,6 @@ window.onload = () => {
     initializeCharts();
 };
 
-
 setInterval(nextSlide, 3000);
 
 // Inicialização dos Gráficos
