@@ -4,125 +4,94 @@
     <meta charset="UTF-8">
     <title>SingulAI - Plataforma de Mensagens Futuras</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="web3.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
-
-  <!-- HEADER FIXO -->
-<header>
-    <div class="logo-container">
-        <img src="Singul AI (1).png" alt="Logo SingulAI" class="logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#hero">Início</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#beneficios">Benefícios</a></li>
-            <li><a href="#tecnologias">Tecnologias</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </nav>
-</header>
-
-   <!-- HERO SECTION COM VÍDEO DE FUNDO -->
-<section class="hero" id="hero">
-  <div class="video-container">
-      <video id="background-video" autoplay loop playsinline muted>
-          <source src="video3.mp4" type="video/mp4">
-      </video>
-      <div class="overlay"></div>
-  </div>
-  <div class="hero-content">
-      <h2>Legado Digital Eterno</h2>
-      <p>Envie mensagens seguras e automatizadas via smart contracts.</p>
-      <button class="cta-button" onclick="openSlideModal()">MENU</button>
-      <button class="mute-button" onclick="toggleVideoSound()" id="muteButton">🔊</button>
-  </div>
-</section>
-
-    <!-- MODAL DESLIZANTE -->
-        <div id="slideModal" class="slide-modal">
-          <div class="slide-modal-content">
-              <span class="close-btn" onclick="closeSlideModal()">&times;</span>
-              <h3>Escolha uma Ação</h3>
-              <button class="modal-button" onclick="openSlideModal('login')">Login</button>
-              <button class="modal-button" onclick="openSlideModal('connect')">Conectar Carteira</button>
-              <button class="modal-button" onclick="openSlideModal('create')">Criar Carteira</button>
-              <div id="slideModalBody"></div>
-          </div>
+    <!-- HEADER FIXO -->
+    <header>
+        <div class="logo-container">
+            <img src="Singul AI.png" alt="Logo SingulAI" class="logo">
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                <li><a href="dispositivo.html">Dispositivo</a></li>
+                <li><a href="tecnologias.html">Tecnologias</a></li>
+                <li><a href="tokenomics.html">Tokenomics</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- SLIDES DE FUNCIONALIDADES -->
-    <section id="slides">
-        <div class="slide">
-            <h2>O que é a SingulAI?</h2>
-            <p>SingulAI é uma plataforma que utiliza inteligência artificial para aprimorar a comunicação digital, oferecendo suporte para mensagens de texto, vídeo e áudio.</p>
+    <!-- HERO SECTION COM VÍDEO DE FUNDO -->
+    <section class="hero">
+        <div class="video-container">
+            <video id="background-video" autoplay loop muted playsinline>
+                <source src="video3.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="overlay"></div>
         </div>
-        <div class="slide">
-            <h2>Tipos de Mensagens</h2>
-            <p>Envie mensagens em formato de texto, vídeo ou áudio. Utilize upload de arquivos ou grave diretamente pelo dispositivo.</p>
+        <div class="hero-content">
+            <h1>SingulAI - A Máquina do Tempo Digital</h1>
+            <p>Preserve seu legado digital com segurança e autenticidade.</p>
+            <button onclick="openSlideModal()">Explore Agora</button>
+            <button class="mute-button" onclick="toggleVideoSound()" id="muteButton">🔊</button>
+        </div>
+    </section>
+
+    <!-- BOTÃO DE VOLTAR AO TOPO -->
+    <button onclick="scrollToTop()" id="backToTop" class="back-to-top">⬆</button>
+
+    <!-- FUNCIONALIDADES COM CARROSSEL -->
+    <section id="funcionalidades">
+        <h2>Funcionalidades Principais</h2>
+        <div class="carousel">
+            <div class="slide" id="slide1">Autenticação Biométrica</div>
+            <div class="slide" id="slide2">Mensagens Programadas</div>
+            <div class="slide" id="slide3">Economia Tokenizada</div>
         </div>
     </section>
 
     <!-- SOBRE -->
     <section id="sobre">
-        <h2>Como Funciona</h2>
-        <p>A SingulAI utiliza smart contracts para garantir a imutabilidade das suas mensagens e ativos digitais. Combinando Inteligência Artificial e Blockchain, oferecemos um ecossistema seguro para enviar mensagens futuras, criar legados e agendar postagens.</p>
+        <h2>Sobre o Projeto</h2>
+        <p>A SingulAI é uma plataforma revolucionária que une blockchain, inteligência artificial e segurança digital para preservar legados de forma segura e eterna.</p>
     </section>
 
     <!-- TECNOLOGIAS -->
     <section id="tecnologias">
         <h2>Tecnologias Utilizadas</h2>
-        <div class="tech-icons">
-            <div class="tech-item">
-                <img src="blockchain.png" alt="Blockchain">
-                <p>Blockchain</p>
-            </div>
-            <div class="tech-item">
-                <img src="ai.png" alt="Inteligência Artificial">
-                <p>Inteligência Artificial</p>
-            </div>
-            <div class="tech-item">
-                <img src="connectivity.png" alt="Conectividade">
-                <p>Conectividade</p>
-            </div>
-        </div>
+        <ul>
+            <li>Blockchain (Ethereum, Solana, Avalanche)</li>
+            <li>IA Generativa para interações futuras</li>
+            <li>Autenticação Biométrica Multifatorial</li>
+            <li>Contratos Inteligentes Programáveis</li>
+        </ul>
     </section>
 
- <!-- SEÇÃO DE GRÁFICOS -->
-<section class="chart-section">
-  <div class="chart-container">
-      <h3 class="chart-title">Utilização de Tecnologia</h3>
-      <canvas id="chartUtilizacao"></canvas>
-  </div>
-  <div class="chart-container">
-      <h3 class="chart-title">Adoção ao Longo do Tempo</h3>
-      <canvas id="chartAdocao"></canvas>
-  </div>
-  <div class="chart-container">
-      <h3 class="chart-title">Nível de Segurança</h3>
-      <canvas id="chartSeguranca"></canvas>
-  </div>
-</section>
-
+    <!-- TOKENOMICS -->
+    <section id="tokenomics">
+        <h2>Economia do Token</h2>
+        <p>O SingulAI Token (SAT) é usado para transações, acesso a funcionalidades premium e recompensas para adoção inicial.</p>
+    </section>
 
     <!-- CONTATO -->
     <section id="contato">
         <h2>Contato</h2>
-        <p>Fale conosco: <a href="mailto:contato@singulai.com" style="color:#00c3ff;text-decoration:none;">contato@singulai.com</a></p>
+        <p>Para mais informações, entre em contato conosco pelo email: <a href="mailto:contato@singulai.com">contato@singulai.com</a></p>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
     </footer>
-
-    <!-- SCRIPTS -->
-    <script src="web3.min.js"></script>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </body>
 </html>

@@ -1,123 +1,144 @@
-/* dashboard.js */
+/* script.js */
 
-// Verifica se o Web3 está disponível
-function isWeb3Available() {
-    return typeof window.ethereum !== "undefined";
+// Endereço do contrato SingulAI
+const contractAddress = "SEU_ENDERECO_CONTRATO";
+const contractABI = [
+    {
+        "inputs": [
+            { "internalType": "address", "name": "_singulAIToken", "type": "address" }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            { "internalType": "uint256", "name": "_messageId", "type": "uint256" }
+        ],
+        "name": "executeMessage",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+        ],
+        "name": "burnTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            { "internalType": "address", "name": "_recipient", "type": "address" },
+            { "internalType": "string", "name": "_content", "type": "string" },
+            { "internalType": "uint256", "name": "_releaseTime", "type": "uint256" },
+            { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+        ],
+        "name": "createMessage",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+];
+
+// Atualizar Saldo de Tokens SingulAI
+async function atualizarSaldo() {
+    showSpinner();
+    const web3 = new Web3(window.ethereum);
+    try {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+        const balance = await contract.methods.balanceOf(accounts[0]).call();
+        document.getElementById("saldoInfo").innerText = `Saldo: ${balance} SGL Tokens`;
+    } catch (error) {
+        alert("Erro ao atualizar saldo de tokens: " + error.message);
+    } finally {
+        hideSpinner();
+    }
 }
 
-// Alternar a visualização das seções
+// Queimar Tokens SingulAI
+async function queimarTokens(amount) {
+    showSpinner();
+    const web3 = new Web3(window.ethereum);
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+    try {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        await contract.methods.burnTokens(amount).send({ from: accounts[0] });
+        alert("Tokens queimados com sucesso!");
+        atualizarSaldo();
+    } catch (error) {
+        alert("Erro ao queimar tokens: " + error.message);
+    } finally {
+        hideSpinner();
+    }
+}
+
+// Queimar Tokens com Botão Rápido
+async function queimarTokensRapido() {
+    const amount = prompt("Digite a quantidade de tokens a queimar:");
+    if (amount) {
+        await queimarTokens(amount);
+    }
+}
+
+// Spinner de Carregamento
+function showSpinner() {
+    const spinner = document.createElement('div');
+    spinner.id = 'spinner';
+    spinner.innerHTML = '<div class="loader"></div>';
+    document.body.appendChild(spinner);
+}
+
+function hideSpinner() {
+    const spinner = document.getElementById('spinner');
+    if (spinner) {
+        spinner.remove();
+    }
+}
+
+// Alternar entre Seções
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.content-container');
-    sections.forEach(section => section.style.display = 'none');
-    document.getElementById(sectionId).style.display = 'block';
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+        activeSection.style.display = 'block';
+    }
 }
 
-// Conectar a carteira (MetaMask)
+// Conectar Carteira
 async function connectWallet() {
+    showSpinner();
     try {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         const account = accounts[0];
         document.getElementById("walletAddress").innerText = `Carteira Conectada: ${account}`;
-        alert(`Carteira Conectada: ${account}`);
+        alert("Carteira Conectada com Sucesso!");
+        atualizarSaldo();
     } catch (error) {
         alert("Erro ao conectar carteira: " + error.message);
+    } finally {
+        hideSpinner();
     }
 }
 
-// Criar uma nova carteira
-function criarNovaCarteira() {
-    const web3 = new Web3();
-    const novaCarteira = web3.eth.accounts.create();
-    const endereco = novaCarteira.address;
-    const chavePrivada = novaCarteira.privateKey;
-
-    document.getElementById("resultadoCarteira").innerHTML = `
-        <p>Endereço: ${endereco}</p>
-        <p>Chave Privada: ${chavePrivada}</p>
-    `;
-    alert("Carteira criada com sucesso!");
-}
-
-// Upload para IPFS
-async function uploadToIPFS() {
-    const fileInput = document.getElementById("fileUpload").files[0];
-    if (!fileInput) {
-        alert("Selecione um arquivo!");
+// Enviar Mensagem
+async function enviarMensagem() {
+    const recipient = document.getElementById("msgRecipient").value;
+    const content = document.getElementById("msgContent").value;
+    if (!recipient || !content) {
+        alert("Por favor, preencha todos os campos.");
         return;
     }
-
-    const formData = new FormData();
-    formData.append("file", fileInput);
-
-    try {
-        const response = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
-            method: "POST",
-            headers: {
-                "pinata_api_key": "SUA_PINATA_API_KEY",
-                "pinata_secret_api_key": "SUA_PINATA_SECRET_KEY"
-            },
-            body: formData
-        });
-        const data = await response.json();
-        alert("Upload para IPFS bem-sucedido!");
-        document.getElementById("ipfsHash").innerText = `IPFS Hash: ${data.IpfsHash}`;
-    } catch (error) {
-        alert("Erro no upload para IPFS: " + error.message);
-    }
-}
-
-// Desconectar a carteira
-function disconnectWallet() {
-    userWallet = null;
-    const walletInfo = document.getElementById("walletInfo");
-    walletInfo.innerHTML = "<p>Nenhuma carteira conectada</p>";
-    alert("Você desconectou a carteira.");
-}
-
-// Criar uma nova carteira (Web3)
-function criarNovaCarteira() {
-    try {
-        const web3 = new Web3();
-        const novaCarteira = web3.eth.accounts.create();
-        const endereco = novaCarteira.address;
-        const chavePrivada = novaCarteira.privateKey;
-
-        const resultadoDiv = document.getElementById("resultadoCarteira");
-        resultadoDiv.innerHTML = `
-            <p>Endereço: ${endereco}</p>
-            <p>Chave Privada: ${chavePrivada}</p>
-        `;
-        alert("Carteira criada com sucesso!");
-    } catch (error) {
-        alert("Erro ao criar carteira: " + error.message);
-    }
-}
-
-// Recarregar saldo da carteira
-async function atualizarSaldo() {
-    if (!isWeb3Available()) {
-        alert("Web3 não está disponível!");
-        return;
-    }
-
     try {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-        const account = accounts[0];
-        const web3 = new Web3(window.ethereum);
-        const saldo = await web3.eth.getBalance(account);
-        const saldoEmEth = web3.utils.fromWei(saldo, 'ether');
-
-        const saldoInfo = document.getElementById("saldoInfo");
-        saldoInfo.innerHTML = `
-            <p>Saldo: ${saldoEmEth} ETH</p>
-        `;
+        await contract.methods.createMessage(recipient, content, Date.now(), 0).send({ from: accounts[0] });
+        alert("Mensagem enviada com sucesso!");
     } catch (error) {
-        alert("Erro ao atualizar saldo: " + error.message);
+        alert("Erro ao enviar mensagem: " + error.message);
     }
-}
-
-// Logout e redirecionar para a página inicial
-function logout() {
-    alert("Você foi desconectado.");
-    window.location.href = "index.html";
 }

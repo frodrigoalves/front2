@@ -2,11 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Seleciona o modal e os botões de fechamento
     const modal = document.getElementById("modalCadastro");
     const closeModalBtn = document.querySelector(".close");
+    const submitBtn = document.querySelector("button[type='submit']");
     let startY = 0; // Para rastrear o toque inicial no celular
 
     // Verifica se os elementos existem antes de adicionar eventos
-    if (modal && closeModalBtn) {
-        
+    if (modal && closeModalBtn && submitBtn) {
+
         // Evento para abrir o modal nos botões de "Acessar Plataforma"
         document.querySelectorAll(".btn").forEach(btn => {
             btn.addEventListener("click", function (event) {
@@ -47,12 +48,47 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
+        // Função para cadastrar usuário
+        async function cadastrarUsuario() {
+            const email = document.getElementById("email").value;
+            const telefone = document.getElementById("telefone").value;
+            const senha = "senha123";  // Senha fixa (para teste)
+
+            try {
+                const response = await fetch("http://localhost:5000/api/users/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email, telefone, senha })
+                });
+
+                if (response.ok) {
+                    alert("Cadastro realizado com sucesso!");
+                    closeModal();
+                } else {
+                    const errorData = await response.json();
+                    alert("Erro ao cadastrar: " + errorData.error);
+                }
+            } catch (error) {
+                console.error("Erro:", error);
+                alert("Erro ao conectar com o servidor!");
+            }
+        }
+
+        // Evento de clique no botão de cadastro
+        submitBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            cadastrarUsuario();
+        });
+
         // Se veio de outra página com parâmetro ?cadastro=true, abrir modal automaticamente
         const params = new URLSearchParams(window.location.search);
         if (params.get("cadastro") === "true") {
             openModal();
         }
+
     } else {
-        console.error("⚠️ Elemento do modal não encontrado! Verifique se o ID 'modalCadastro' está correto.");
+        console.error("⚠️ Elemento do modal ou botão não encontrado! Verifique se o ID 'modalCadastro' está correto.");
     }
 });
