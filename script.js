@@ -37,6 +37,7 @@ async function checkWalletConnection() {
             if (accounts.length > 0) {
                 userWallet = accounts[0];
                 userLoggedIn = true;
+                updateWalletInfo(userWallet);
                 showNotification("Carteira conectada: " + userWallet, "success");
             } else {
                 showNotification("Nenhuma carteira conectada.", "warning");
@@ -45,11 +46,19 @@ async function checkWalletConnection() {
             showNotification("Erro ao verificar carteira: " + error.message, "error");
         }
     } else {
-        showNotification("Web3 não está disponível.", "error");
+        showNotification("Web3 não está disponível. Instale o MetaMask.", "error");
     }
 }
 
-// Logout
+// Atualizar Informações da Carteira
+function updateWalletInfo(address) {
+    const walletInfo = document.getElementById("walletInfo");
+    if (walletInfo) {
+        walletInfo.textContent = `Carteira Conectada: ${address}`;
+    }
+}
+
+// Logout da Carteira
 function logout() {
     userLoggedIn = false;
     userWallet = null;
@@ -70,18 +79,69 @@ window.addEventListener("scroll", function() {
 
 // Carrossel Automático
 let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
+let slideInterval;
+
+function initializeCarousel() {
+    const slides = document.querySelectorAll(".slide");
+    if (slides.length > 0) {
+        showSlide(currentSlide); // Mostrar o primeiro slide
+        slideInterval = setInterval(nextSlide, 3000); // Alternar a cada 3 segundos
+    }
+}
 
 function showSlide(index) {
+    const slides = document.querySelectorAll(".slide");
     slides.forEach((slide, i) => {
         slide.style.display = (i === index) ? "block" : "none";
     });
 }
 
 function nextSlide() {
+    const slides = document.querySelectorAll(".slide");
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
 }
+
+// Inicialização dos Gráficos
+function initializeCharts() {
+    const ctx1 = document.getElementById("chartUtilizacao").getContext("2d");
+    new Chart(ctx1, {
+        type: "bar",
+        data: {
+            labels: ["IA", "Blockchain", "Segurança", "Token"],
+            datasets: [{
+                label: "Utilização (%)",
+                data: [75, 60, 90, 80],
+                backgroundColor: ["#007bff", "#28a745", "#ffc107", "#17a2b8"],
+            }],
+        },
+    });
+
+    const ctx2 = document.getElementById("chartAdocao").getContext("2d");
+    new Chart(ctx2, {
+        type: "line",
+        data: {
+            labels: ["2022", "2023", "2024", "2025"],
+            datasets: [{
+                label: "Adoção (%)",
+                data: [30, 50, 70, 90],
+                borderColor: "#007bff",
+                fill: false,
+            }],
+        },
+    });
+}
+
+// Botão de Som
+document.getElementById("muteButton")?.addEventListener("click", toggleVideoSound);
+
+// Função de Inicialização
+window.onload = () => {
+    checkWalletConnection();
+    initializeCarousel();
+    initializeCharts();
+};
+
 
 setInterval(nextSlide, 3000);
 

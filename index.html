@@ -9,41 +9,45 @@
 </head>
 <body>
 
+    <!-- ACESSIBILIDADE -->
+    <a href="#hero" class="skip-link">Ir para o conteúdo principal</a>
+
     <!-- HEADER -->
     <header>
         <div class="logo-container">
-            <img src="logo.png" alt="Logo SingulAI" class="logo">
+            <img src="logo.png" alt="Logotipo da SingulAI" class="logo" loading="lazy">
         </div>
         <nav>
             <ul>
                 <li><a href="#hero">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#funcionalidades">Funcionalidades</a></li>
-                <li><a href="#dispositivo">Dispositivo</a></li>
                 <li><a href="#tecnologias">Tecnologias</a></li>
                 <li><a href="#tokenomics">Tokenomics</a></li>
                 <li><a href="#contato">Contato</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
             </ul>
         </nav>
-    </header>    
+    </header>
 
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
         <div class="video-container">
             <video id="background-video" autoplay loop muted>
                 <source src="video3.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
             </video>
             <div class="overlay"></div>
             <div class="hero-content">
                 <h1>SingulAI - A Máquina do Tempo Digital</h1>
                 <p>Preserve seu legado digital com segurança e autenticidade.</p>
-                <button class="cta-button">Explore Agora</button>
+                <button class="cta-button" aria-label="Explore Agora">Explore Agora</button>
             </div>
         </div>
     </section>
 
-    <div class="content-section">
+    <!-- FUNCIONALIDADES FUTURAS -->
+    <section id="funcionalidades" class="content-section">
         <h2>Funcionalidades Futuras</h2>
         <div class="func-buttons">
             <button class="func-button" disabled>
@@ -56,11 +60,8 @@
                 <i class="bx bx-coin-stack"></i> Economia Tokenizada
             </button>
         </div>
-        <p class="func-message">
-            Essas funcionalidades estão atualmente em desenvolvimento e serão disponibilizadas em atualizações futuras.
-        </p>
-    </div>    
-    
+        <p class="func-message">Essas funcionalidades estão atualmente em desenvolvimento e serão disponibilizadas em atualizações futuras.</p>
+    </section>
 
     <!-- SOBRE -->
     <section id="sobre" class="content-section">
@@ -83,7 +84,7 @@
     <!-- CONTATO -->
     <section id="contato" class="content-section">
         <h2>Contato</h2>
-        <p>Para mais informações, entre em contato conosco pelo email: <a href="mailto:contato@singulai.com">contato@singulai.com</a></p>
+        <p>Para mais informações, entre em contato pelo email: <a href="mailto:suporte@singulai.com">contato@singulai.com</a></p>
     </section>
 
     <!-- FOOTER -->
