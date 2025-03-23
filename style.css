@@ -177,28 +177,43 @@ header nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* FUNÇÕES FUTURAS */
+/* FUNCIONALIDADES FUTURAS */
 .func-buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 .func-button {
-    padding: 15px 25px;
+    padding: 15px 30px;
     background: #333;
     color: #888;
     border-radius: 8px;
     border: 1px solid #555;
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.func-button i {
+    font-size: 1.2rem;
 }
 
 .func-button:hover {
     background: #444;
-    color: #ccc;
+    color: #bbb;
+    transform: scale(1.03);
+}
+
+.func-message {
+    color: #888;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
 }
 
 /* FORM STYLES */
