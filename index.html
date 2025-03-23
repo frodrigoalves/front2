@@ -2,89 +2,77 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>SingulAI - Plataforma de Mensagens Futuras</title>
+    <title>SingulAI - A Máquina do Tempo Digital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="web3.min.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
-    <!-- HEADER FIXO -->
+
+    <!-- HEADER -->
     <header>
         <div class="logo-container">
-            <img src="Singul AI.png" alt="Logo SingulAI" class="logo">
+            <img src="logo.png" alt="Logo SingulAI" class="logo">
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="funcionalidades.html">Funcionalidades</a></li>
-                <li><a href="dispositivo.html">Dispositivo</a></li>
-                <li><a href="tecnologias.html">Tecnologias</a></li>
-                <li><a href="tokenomics.html">Tokenomics</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#funcionalidades">Funcionalidades</a></li>
+                <li><a href="#dispositivo">Dispositivo</a></li>
+                <li><a href="#tecnologias">Tecnologias</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#contato">Contato</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
             </ul>
         </nav>
-    </header>
+    </header>    
 
-    <!-- HERO SECTION COM VÍDEO DE FUNDO -->
-    <section class="hero">
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
         <div class="video-container">
-            <video id="background-video" autoplay loop muted playsinline>
+            <video id="background-video" autoplay loop muted>
                 <source src="video3.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
             </video>
             <div class="overlay"></div>
-        </div>
-        <div class="hero-content">
-            <h1>SingulAI - A Máquina do Tempo Digital</h1>
-            <p>Preserve seu legado digital com segurança e autenticidade.</p>
-            <button onclick="openSlideModal()">Explore Agora</button>
-            <button class="mute-button" onclick="toggleVideoSound()" id="muteButton">🔊</button>
+            <div class="hero-content">
+                <h1>SingulAI - A Máquina do Tempo Digital</h1>
+                <p>Preserve seu legado digital com segurança e autenticidade.</p>
+                <button class="cta-button">Explore Agora</button>
+            </div>
         </div>
     </section>
 
-    <!-- BOTÃO DE VOLTAR AO TOPO -->
-    <button onclick="scrollToTop()" id="backToTop" class="back-to-top">⬆</button>
-
-    <!-- FUNCIONALIDADES COM CARROSSEL -->
-    <section id="funcionalidades">
+    <!-- FUNCIONALIDADES -->
+    <section id="funcionalidades" class="content-section">
         <h2>Funcionalidades Principais</h2>
-        <div class="carousel">
-            <div class="slide" id="slide1">Autenticação Biométrica</div>
-            <div class="slide" id="slide2">Mensagens Programadas</div>
-            <div class="slide" id="slide3">Economia Tokenizada</div>
+        <div class="func-buttons">
+            <button class="func-button">Autenticação Biométrica</button>
+            <button class="func-button">Mensagens Programadas</button>
+            <button class="func-button">Economia Tokenizada</button>
         </div>
     </section>
 
     <!-- SOBRE -->
-    <section id="sobre">
+    <section id="sobre" class="content-section">
         <h2>Sobre o Projeto</h2>
         <p>A SingulAI é uma plataforma revolucionária que une blockchain, inteligência artificial e segurança digital para preservar legados de forma segura e eterna.</p>
     </section>
 
     <!-- TECNOLOGIAS -->
-    <section id="tecnologias">
+    <section id="tecnologias" class="content-section">
         <h2>Tecnologias Utilizadas</h2>
-        <ul>
-            <li>Blockchain (Ethereum, Solana, Avalanche)</li>
-            <li>IA Generativa para interações futuras</li>
-            <li>Autenticação Biométrica Multifatorial</li>
-            <li>Contratos Inteligentes Programáveis</li>
-        </ul>
+        <p>Blockchain (Ethereum, Solana, Avalanche), IA Generativa, Autenticação Biométrica Multifatorial, Contratos Inteligentes Programáveis.</p>
     </section>
 
     <!-- TOKENOMICS -->
-    <section id="tokenomics">
+    <section id="tokenomics" class="content-section">
         <h2>Economia do Token</h2>
         <p>O SingulAI Token (SAT) é usado para transações, acesso a funcionalidades premium e recompensas para adoção inicial.</p>
     </section>
 
     <!-- CONTATO -->
-    <section id="contato">
+    <section id="contato" class="content-section">
         <h2>Contato</h2>
         <p>Para mais informações, entre em contato conosco pelo email: <a href="mailto:contato@singulai.com">contato@singulai.com</a></p>
     </section>
@@ -93,5 +81,8 @@
     <footer>
         <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
 </body>
 </html>
