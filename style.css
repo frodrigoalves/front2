@@ -16,38 +16,52 @@ body {
 /* HEADER */
 header {
     width: 100%;
-    background: #1a1a1a;
-    padding: 20px;
+    background: rgba(26, 26, 26, 0.9);
+    padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     position: fixed;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+header:hover {
+    background: rgba(26, 26, 26, 1);
 }
 
 .logo-container .logo {
-    height: 60px;
+    height: 100px;
     width: auto;
     object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-container .logo:hover {
+    transform: scale(1.05);
 }
 
 header nav ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 header nav ul li a {
     color: #f1f1f1;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
 header nav ul li a:hover {
-    color: #007bff;
+    color: #00bfff;
+    border-bottom: 2px solid #00bfff;
 }
 
 /* HERO SECTION */
@@ -88,23 +102,37 @@ header nav ul li a:hover {
     z-index: 1;
     color: white;
     text-align: center;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #00bfff, 0 0 30px #007bff;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #f1f1f1;
+    text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
 }
 
 .cta-button {
-    padding: 12px 20px;
+    padding: 15px 30px;
     background: #007bff;
-    border: none;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .cta-button:hover {
     background: #0056b3;
+    transform: scale(1.05);
 }
 
 /* BACK TO TOP BUTTON */
@@ -116,13 +144,15 @@ header nav ul li a:hover {
     color: white;
     border: none;
     border-radius: 50%;
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
     display: none;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .back-to-top:hover {
     background: #0056b3;
+    transform: scale(1.1);
 }
 
 /* CAROUSEL */
@@ -147,31 +177,7 @@ header nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* CONTENT SECTION */
-.content-section {
-    padding: 60px 20px;
-    margin-top: 80px;
-    background: #1a1a1a;
-}
-
-.content-section h2 {
-    font-size: 2rem;
-    color: #4db8ff;
-    margin-bottom: 20px;
-}
-
-.content-section p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-/* SEÇÃO DE FUNCIONALIDADES FUTURAS */
-.content-section h2 {
-    font-size: 2rem;
-    color: #4db8ff;
-    margin-bottom: 20px;
-}
-
+/* FUNÇÕES FUTURAS */
 .func-buttons {
     display: flex;
     justify-content: center;
@@ -185,19 +191,14 @@ header nav ul li a:hover {
     color: #888;
     border-radius: 8px;
     border: 1px solid #555;
-    cursor: not-allowed;
     opacity: 0.6;
+    cursor: not-allowed;
     transition: background 0.3s ease;
 }
 
 .func-button:hover {
     background: #444;
     color: #ccc;
-}
-
-.func-button[disabled] {
-    opacity: 0.4;
-    cursor: not-allowed;
 }
 
 /* FORM STYLES */
@@ -241,38 +242,15 @@ footer {
     padding: 20px;
     text-align: center;
     margin-top: 30px;
-}
-
-footer p {
-    margin: 0;
     color: #888;
 }
 
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    header nav ul {
-        flex-direction: column;
-        gap: 10px;
+/* ANIMATION */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 30px #007bff;
     }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1.2rem;
-    }
-
-    .cta-button {
-        width: 80%;
-    }
-
-    .func-buttons {
-        flex-direction: column;
-    }
-
-    .func-button {
-        width: 80%;
-        margin: 10px auto;
+    to {
+        text-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff, 0 0 60px #00bfff;
     }
 }
