@@ -1,10 +1,8 @@
 /* script.js */
 
 // Variáveis globais
-let userLoggedIn = false;
-let userWallet = null;
-const contractAddress = "SEU_CONTRATO_AQUI"; // Substitua com o endereço do contrato real
-const contractABI = [/* ABI do contrato */]; // Substitua com o ABI do contrato real
+let currentSlide = 0;
+let slideInterval;
 
 // Verifica se o Web3 está disponível
 function isWeb3Available() {
@@ -80,9 +78,6 @@ window.addEventListener("scroll", function() {
 });
 
 // Carrossel Automático para as frases
-let currentSlide = 0;
-let slideInterval;
-
 function initializeCarousel() {
     const slides = document.querySelectorAll(".slide");
     if (slides.length > 0) {
