@@ -196,6 +196,56 @@ header nav ul li a:hover {
     flex-wrap: wrap;
 }
 
+/* SEÇÃO SOBRE O PROJETO COM CARDS */
+.sobre-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 30%;
+    min-width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #00bfff;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+    .card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
+
 /* FOOTER */
 footer {
     background-color: #1a1a1a;
