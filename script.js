@@ -3,6 +3,7 @@
 // Variáveis globais
 let currentSlide = 0;
 let slideInterval;
+let slides;
 
 // Verifica se o Web3 está disponível
 function isWeb3Available() {
@@ -79,15 +80,14 @@ window.addEventListener("scroll", function() {
 
 // Carrossel Automático para as frases
 function initializeCarousel() {
-    const slides = document.querySelectorAll(".slide");
+    slides = document.querySelectorAll(".slide");
     if (slides.length > 0) {
         showSlide(currentSlide); // Mostrar o primeiro slide
-        slideInterval = setInterval(nextSlide, 3000); // Alternar a cada 3 segundos
+        slideInterval = setInterval(nextSlide, 5000); // Alterando para 5 segundos de intervalo
     }
 }
 
 function showSlide(index) {
-    const slides = document.querySelectorAll(".slide");
     slides.forEach((slide, i) => {
         slide.classList.remove("active");
         if (i === index) {
@@ -97,7 +97,6 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-    const slides = document.querySelectorAll(".slide");
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
 }
@@ -149,4 +148,4 @@ window.onload = () => {
     initializeCharts();
 };
 
-setInterval(nextSlide, 3000); // Definir intervalos para mudança de slide a cada 3 segundos
+setInterval(nextSlide, 5000); // Aumentei o intervalo para 5 segundos entre cada slide
