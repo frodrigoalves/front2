@@ -79,7 +79,7 @@ window.addEventListener("scroll", function() {
     }
 });
 
-// Carrossel Automático
+// Carrossel Automático para as frases
 let currentSlide = 0;
 let slideInterval;
 
@@ -94,7 +94,10 @@ function initializeCarousel() {
 function showSlide(index) {
     const slides = document.querySelectorAll(".slide");
     slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? "block" : "none";
+        slide.classList.remove("active");
+        if (i === index) {
+            slide.classList.add("active");
+        }
     });
 }
 
