@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>SingulAI - A Máquina do Tempo Digital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- ACESSIBILIDADE -->
-    <a href="#hero" class="skip-link">Ir para o conteúdo principal</a>
+    <a href="#hero" class="skip-link" aria-label="Pular para o conteúdo principal">Ir para o conteúdo principal</a>
 
     <!-- HEADER -->
     <header>
@@ -49,16 +49,22 @@
     <!-- FUNCIONALIDADES FUTURAS -->
     <section id="funcionalidades" class="content-section">
         <h2>Funcionalidades Futuras</h2>
-        <div class="func-buttons">
-            <button class="func-button" disabled>
-                <i class="bx bx-lock-alt"></i> Autenticação Biométrica
-            </button>
-            <button class="func-button" disabled>
-                <i class="bx bx-message-square-dots"></i> Mensagens Programadas
-            </button>
-            <button class="func-button" disabled>
-                <i class="bx bx-coin-stack"></i> Economia Tokenizada
-            </button>
+        <div class="carousel">
+            <div class="slide">
+                <button class="func-button" disabled>
+                    <i class="bx bx-lock-alt"></i> Autenticação Biométrica
+                </button>
+            </div>
+            <div class="slide">
+                <button class="func-button" disabled>
+                    <i class="bx bx-message-square-dots"></i> Mensagens Programadas
+                </button>
+            </div>
+            <div class="slide">
+                <button class="func-button" disabled>
+                    <i class="bx bx-coin-stack"></i> Economia Tokenizada
+                </button>
+            </div>
         </div>
         <p class="func-message">Essas funcionalidades estão atualmente em desenvolvimento e serão disponibilizadas em atualizações futuras.</p>
     </section>
@@ -84,7 +90,7 @@
     <!-- CONTATO -->
     <section id="contato" class="content-section">
         <h2>Contato</h2>
-        <p>Para mais informações, entre em contato pelo email: <a href="mailto:suporte@singulai.com">contato@singulai.com</a></p>
+        <p>Para mais informações, entre em contato pelo email: <a href="mailto:contato@singulai.com">contato@singulai.com</a></p>
     </section>
 
     <!-- FOOTER -->

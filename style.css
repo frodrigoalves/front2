@@ -172,6 +172,11 @@ header nav ul li a:hover {
     color: white;
     min-width: 250px;
     transition: transform 0.3s ease;
+    display: none; /* Initially hide all slides */
+}
+
+.slide.active {
+    display: block; /* Display active slide */
 }
 
 .slide:hover {

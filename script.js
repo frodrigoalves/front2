@@ -3,8 +3,8 @@
 // Variáveis globais
 let userLoggedIn = false;
 let userWallet = null;
-const contractAddress = "SEU_CONTRATO_AQUI";
-const contractABI = [/* ABI do contrato */];
+const contractAddress = "SEU_CONTRATO_AQUI"; // Substitua com o endereço do contrato real
+const contractABI = [/* ABI do contrato */]; // Substitua com o ABI do contrato real
 
 // Verifica se o Web3 está disponível
 function isWeb3Available() {
@@ -74,7 +74,9 @@ function scrollToTop() {
 // Mostrar ou Ocultar Botão de Voltar ao Topo
 window.addEventListener("scroll", function() {
     const backToTop = document.getElementById("backToTop");
-    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    if (backToTop) {
+        backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    }
 });
 
 // Carrossel Automático
@@ -102,38 +104,45 @@ function nextSlide() {
     showSlide(currentSlide);
 }
 
-// Inicialização dos Gráficos
+// Inicialização dos Gráficos (Certifique-se de incluir a biblioteca Chart.js no HTML)
 function initializeCharts() {
-    const ctx1 = document.getElementById("chartUtilizacao").getContext("2d");
-    new Chart(ctx1, {
-        type: "bar",
-        data: {
-            labels: ["IA", "Blockchain", "Segurança", "Token"],
-            datasets: [{
-                label: "Utilização (%)",
-                data: [75, 60, 90, 80],
-                backgroundColor: ["#007bff", "#28a745", "#ffc107", "#17a2b8"],
-            }],
-        },
-    });
+    const ctx1 = document.getElementById("chartUtilizacao")?.getContext("2d");
+    if (ctx1) {
+        new Chart(ctx1, {
+            type: "bar",
+            data: {
+                labels: ["IA", "Blockchain", "Segurança", "Token"],
+                datasets: [{
+                    label: "Utilização (%)",
+                    data: [75, 60, 90, 80],
+                    backgroundColor: ["#007bff", "#28a745", "#ffc107", "#17a2b8"],
+                }],
+            },
+        });
+    }
 
-    const ctx2 = document.getElementById("chartAdocao").getContext("2d");
-    new Chart(ctx2, {
-        type: "line",
-        data: {
-            labels: ["2022", "2023", "2024", "2025"],
-            datasets: [{
-                label: "Adoção (%)",
-                data: [30, 50, 70, 90],
-                borderColor: "#007bff",
-                fill: false,
-            }],
-        },
-    });
+    const ctx2 = document.getElementById("chartAdocao")?.getContext("2d");
+    if (ctx2) {
+        new Chart(ctx2, {
+            type: "line",
+            data: {
+                labels: ["2022", "2023", "2024", "2025"],
+                datasets: [{
+                    label: "Adoção (%)",
+                    data: [30, 50, 70, 90],
+                    borderColor: "#007bff",
+                    fill: false,
+                }],
+            },
+        });
+    }
 }
 
 // Botão de Som
-document.getElementById("muteButton")?.addEventListener("click", toggleVideoSound);
+const muteButton = document.getElementById("muteButton");
+if (muteButton) {
+    muteButton.addEventListener("click", toggleVideoSound);
+}
 
 // Função de Inicialização
 window.onload = () => {
@@ -142,38 +151,4 @@ window.onload = () => {
     initializeCharts();
 };
 
-setInterval(nextSlide, 3000);
-
-// Inicialização dos Gráficos
-function initializeCharts() {
-    const ctx1 = document.getElementById("chartUtilizacao").getContext("2d");
-    new Chart(ctx1, {
-        type: "bar",
-        data: {
-            labels: ["IA", "Blockchain", "Segurança", "Token"],
-            datasets: [{
-                label: "Utilização (%)",
-                data: [75, 60, 90, 80],
-                backgroundColor: ["#007bff", "#28a745", "#ffc107", "#17a2b8"],
-            }],
-        },
-    });
-
-    const ctx2 = document.getElementById("chartAdocao").getContext("2d");
-    new Chart(ctx2, {
-        type: "line",
-        data: {
-            labels: ["2022", "2023", "2024", "2025"],
-            datasets: [{
-                label: "Adoção (%)",
-                data: [30, 50, 70, 90],
-                backgroundColor: "#007bff",
-            }],
-        },
-    });
-}
-
-window.onload = () => {
-    checkWalletConnection();
-    initializeCharts();
-};
+setInterval(nextSlide, 3000); // Definir intervalos para mudança de slide a cada 3 segundos
