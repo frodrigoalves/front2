@@ -196,17 +196,16 @@ header nav ul li a:hover {
     flex-wrap: wrap;
 }
 
-/* SEÇÃO SOBRE O PROJETO COM CARDS */
-.sobre-cards {
+/* CARDS WRAPPER */
+.cards-wrapper {
     display: flex;
-    justify-content: space-around; /* Ajuste para distribuir os cards de maneira igual */
+    justify-content: center;
     gap: 30px;
     margin-top: 30px;
     flex-wrap: wrap;
-    align-items: center; /* Alinha verticalmente os itens */
-    text-align: center;
 }
 
+/* INDIVIDUAL CARD */
 .card {
     background-color: #1a1a1a;
     color: white;
@@ -214,6 +213,7 @@ header nav ul li a:hover {
     border-radius: 12px;
     width: 30%;
     min-width: 280px;
+    text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
