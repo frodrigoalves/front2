@@ -199,10 +199,12 @@ header nav ul li a:hover {
 /* SEÇÃO SOBRE O PROJETO COM CARDS */
 .sobre-cards {
     display: flex;
-    justify-content: center;
+    justify-content: space-around; /* Ajuste para distribuir os cards de maneira igual */
     gap: 30px;
     margin-top: 30px;
     flex-wrap: wrap;
+    align-items: center; /* Alinha verticalmente os itens */
+    text-align: center;
 }
 
 .card {
@@ -212,7 +214,6 @@ header nav ul li a:hover {
     border-radius: 12px;
     width: 30%;
     min-width: 280px;
-    text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
