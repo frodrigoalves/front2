@@ -198,21 +198,17 @@ header nav ul li a:hover {
 
 /* CARDS WRAPPER */
 .cards-wrapper {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 30px;
-    flex-wrap: wrap;
 }
 
-/* INDIVIDUAL CARD */
 .card {
     background-color: #1a1a1a;
     color: white;
     padding: 20px;
     border-radius: 12px;
-    width: 30%;
-    min-width: 280px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -239,11 +235,19 @@ header nav ul li a:hover {
     .card {
         width: 45%;
     }
+
+    .cards-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
     .card {
         width: 100%;
+    }
+
+    .cards-wrapper {
+        grid-template-columns: 1fr;
     }
 }
 
