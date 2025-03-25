@@ -1,96 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>SingulAI - Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="dashboard.css">
+  <meta charset="UTF-8">
+  <title>SingulAI - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Boxicons (ícones) -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  
+  <!-- CSS do Dashboard -->
+  <link rel="stylesheet" href="css/dashboard.css">
+
+  <!-- Biblioteca de Gráficos (Chart.js) se necessário -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <!-- HEADER FIXO -->
-    <header>
-        <h1>SingulAI - Dashboard</h1>
-        <nav>
-            <ul>
-                <li><button onclick="showSection('conectarCarteira')">Conectar Carteira</button></li>
-                <li><button onclick="showSection('enviarMensagem')">Enviar Mensagem</button></li>
-                <li><button onclick="showSection('legadoDigital')">Criar Legado</button></li>
-                <li><button onclick="showSection('agendarPostagem')">Agendar Postagem</button></li>
-                <li><button onclick="showSection('novaCarteira')">Criar Carteira</button></li>
-                <li><button onclick="showSection('listagemMensagens')">Mensagens Enviadas</button></li>
-                <li><button onclick="showSection('uploadIPFS')">Upload para IPFS</button></li>
-                <li><button onclick="logout()">Sair</button></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="Logotipo da SingulAI" class="logo" loading="lazy">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="#stats">Estatísticas</a></li>
+        <!-- Mostra se a carteira está conectada -->
+        <li><a href="#walletInfo" id="walletInfo">Carteira</a></li>
+        <!-- Botão para logout -->
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero">
-        <h1>Transforme seu Legado Digital</h1>
-        <p>Armazene e envie mensagens seguras para o futuro.</p>
+  <main>
+    <!-- Introdução do Dashboard -->
+    <section class="dashboard-intro">
+      <h1>Bem-vindo(a) ao seu Dashboard</h1>
+      <p>Aqui você pode gerenciar seus tokens, visualizar estatísticas e muito mais.</p>
     </section>
 
-    <!-- CONECTAR CARTEIRA -->
-    <div class="content-container" id="conectarCarteira" style="display:none;">
-        <h2>🔗 Conectar Carteira</h2>
-        <button onclick="connectWallet()">Conectar MetaMask</button>
-        <p id="walletAddress">Nenhuma carteira conectada</p>
-    </div>
+    <!-- Seção de Estatísticas -->
+    <section id="stats" class="dashboard-section">
+      <h2>Estatísticas</h2>
+      <div class="charts-container">
+        <canvas id="chartUtilizacao" width="400" height="200"></canvas>
+        <canvas id="chartAdocao" width="400" height="200"></canvas>
+      </div>
+    </section>
+  </main>
 
-    <!-- ENVIO DE MENSAGENS -->
-    <div class="content-container" id="enviarMensagem" style="display:none;">
-        <h2>📩 Enviar Mensagem</h2>
-        <input type="text" id="msgRecipient" placeholder="Carteira do Destinatário">
-        <textarea id="msgContent" placeholder="Mensagem"></textarea>
-        <button onclick="enviarMensagem()">Enviar</button>
-    </div>
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
+  </footer>
 
-    <!-- CRIAÇÃO DE LEGADO DIGITAL -->
-    <div class="content-container" id="legadoDigital" style="display:none;">
-        <h2>🏛 Criar Legado Digital</h2>
-        <input type="text" id="legacyHeir" placeholder="Carteira do Tutor/Herdeiro">
-        <textarea id="legacyDescription" placeholder="Descrição do Legado"></textarea>
-        <button onclick="criarLegado()">Criar</button>
-    </div>
-
-    <!-- AGENDAMENTO DE POSTAGEM -->
-    <div class="content-container" id="agendarPostagem" style="display:none;">
-        <h2>🕒 Agendar Postagem</h2>
-        <input type="text" id="postRecipient" placeholder="Carteira (opcional)">
-        <textarea id="postContent" placeholder="Conteúdo da Postagem"></textarea>
-        <input type="date" id="postDate">
-        <button onclick="agendarPostagem()">Agendar</button>
-    </div>
-
-    <!-- CRIAÇÃO DE NOVA CARTEIRA -->
-    <div class="content-container" id="novaCarteira" style="display:none;">
-        <h2>💼 Criar Nova Carteira</h2>
-        <button onclick="criarNovaCarteira()">Gerar Carteira</button>
-        <div id="resultadoCarteira"></div>
-    </div>
-
-    <!-- UPLOAD PARA IPFS -->
-    <div class="content-container" id="uploadIPFS" style="display:none;">
-        <h2>📂 Upload para IPFS</h2>
-        <input type="file" id="fileUpload">
-        <button onclick="uploadToIPFS()">Upload</button>
-        <p id="ipfsHash"></p>
-    </div>
-
-    <!-- LISTAGEM DE MENSAGENS ENVIADAS -->
-    <div class="content-container" id="listagemMensagens" style="display:none;">
-        <h2>📜 Mensagens Enviadas</h2>
-        <ul id="messageList"></ul>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- SCRIPT JS -->
-    <script src="dashboard.js"></script>
+  <!-- Script do Dashboard -->
+  <script src="js/dashboard.js"></script>
 </body>
 </html>

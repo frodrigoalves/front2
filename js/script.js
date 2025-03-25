@@ -1,21 +1,24 @@
-// script.js
+/* script.js */
 
 // Variáveis globais
 let currentSlide = 0;
 let slideInterval;
-let slides;        // Se tiver carrossel .slide
+let slides;
 let userLoggedIn = false;
 let userWallet = null;
 
 /**
- * Verifica se Web3 (MetaMask) está disponível
+ * Verifica se o Web3 está disponível (ex.: MetaMask)
+ * @returns {boolean} - true se Web3/metamask estiver disponível, caso contrário false
  */
 function isWeb3Available() {
   return typeof window.ethereum !== "undefined";
 }
 
 /**
- * Exibe notificações (opcional, se quiser criar uma notificação na tela)
+ * Exibe notificações personalizadas na tela
+ * @param {string} message - Mensagem a ser exibida
+ * @param {string} [type="info"] - Tipo de notificação (info, success, warning, error)
  */
 function showNotification(message, type = "info") {
   const notification = document.createElement("div");
@@ -26,7 +29,7 @@ function showNotification(message, type = "info") {
 }
 
 /**
- * Alterna o som do vídeo de fundo
+ * Alterna o som do vídeo de fundo (mudo <-> som)
  */
 function toggleVideoSound() {
   const video = document.getElementById("background-video");
@@ -41,7 +44,7 @@ function toggleVideoSound() {
 }
 
 /**
- * Verifica se a carteira está conectada ao carregar
+ * Verifica se o usuário já possui uma carteira conectada ao carregar a página
  */
 async function checkWalletConnection() {
   if (isWeb3Available()) {
@@ -64,7 +67,8 @@ async function checkWalletConnection() {
 }
 
 /**
- * Atualiza informações da carteira na tela (opcional)
+ * Atualiza a exibição de informações da carteira na tela
+ * @param {string} address - Endereço da carteira conectada
  */
 function updateWalletInfo(address) {
   const walletInfo = document.getElementById("walletInfo");
@@ -74,7 +78,7 @@ function updateWalletInfo(address) {
 }
 
 /**
- * Logout da carteira
+ * Desconecta a carteira (logout) e redireciona para o index
  */
 function logout() {
   userLoggedIn = false;
@@ -84,14 +88,14 @@ function logout() {
 }
 
 /**
- * Rolar ao topo
+ * Botão de voltar ao topo (scroll suave)
  */
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 /**
- * Mostrar/ocultar botão 'back to top'
+ * Mostra ou oculta o botão de voltar ao topo baseado na rolagem
  */
 window.addEventListener("scroll", function() {
   const backToTop = document.getElementById("backToTop");
@@ -101,15 +105,20 @@ window.addEventListener("scroll", function() {
 });
 
 /**
- * Carrossel (se houver slides com classe .slide)
+ * Carrossel automático para textos ou depoimentos
  */
 function initializeCarousel() {
   slides = document.querySelectorAll(".slide");
   if (slides.length > 0) {
-    showSlide(currentSlide);
-    slideInterval = setInterval(nextSlide, 5000); // 5s
+    showSlide(currentSlide);      // Exibe o primeiro slide
+    slideInterval = setInterval(nextSlide, 5000); // Troca de slide a cada 5s
   }
 }
+
+/**
+ * Exibe um slide específico
+ * @param {number} index - Índice do slide
+ */
 function showSlide(index) {
   slides.forEach((slide, i) => {
     slide.classList.remove("active");
@@ -118,6 +127,10 @@ function showSlide(index) {
     }
   });
 }
+
+/**
+ * Mostra o próximo slide
+ */
 function nextSlide() {
   if (!slides || slides.length === 0) return;
   currentSlide = (currentSlide + 1) % slides.length;
@@ -125,7 +138,8 @@ function nextSlide() {
 }
 
 /**
- * Inicializa gráficos (caso use Chart.js)
+ * Inicializa gráficos usando a biblioteca Chart.js
+ * (Certifique-se de incluir Chart.js no HTML ou de forma externa)
  */
 function initializeCharts() {
   const ctx1 = document.getElementById("chartUtilizacao")?.getContext("2d");
@@ -161,7 +175,7 @@ function initializeCharts() {
 }
 
 /**
- * Listener do botão de som
+ * Listener para o botão de som do vídeo
  */
 const muteButton = document.getElementById("muteButton");
 if (muteButton) {
@@ -169,7 +183,7 @@ if (muteButton) {
 }
 
 /**
- * Ao carregar a página
+ * Inicialização ao carregar a página
  */
 window.onload = () => {
   checkWalletConnection();

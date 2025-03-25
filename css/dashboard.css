@@ -1,4 +1,5 @@
-/* RESET BÁSICO */
+/* Exemplo de CSS específico para o Dashboard */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,10 +12,10 @@
     color: #ffffff;
     text-align: center;
     overflow-x: hidden;
-    padding-top: 140px; /* Espaço para o header fixo */
+    padding-top: 160px; /* Espaço para o header fixo */
   }
   
-  /* HEADER */
+  /* Cabeçalho (mesmo estilo do style.css) */
   header {
     width: 100%;
     background: rgba(26, 26, 26, 0.9);
@@ -26,15 +27,19 @@
     position: fixed;
     top: 0;
     z-index: 1000;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
   }
   header:hover {
     background: rgba(26, 26, 26, 1);
   }
   .logo-container .logo {
-    height: 80px;
+    height: 100px;
     width: auto;
     object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .logo-container .logo:hover {
+    transform: scale(1.05);
   }
   header nav ul {
     list-style: none;
@@ -45,21 +50,19 @@
     color: #f1f1f1;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 8px 12px;
+    transition: color 0.3s ease, background-color 0.3s ease;
     border-bottom: 2px solid transparent;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
   }
   header nav ul li a:hover {
     color: #00bfff;
     border-bottom: 2px solid #00bfff;
   }
   
-  /* DASHBOARD CONTEÚDO */
+  /* Seções do Dashboard */
   .dashboard-intro {
-    margin: 20px auto;
-    max-width: 800px;
-    text-align: center;
+    margin: 20px;
   }
   .dashboard-intro h1 {
     font-size: 2rem;
@@ -80,7 +83,7 @@
     justify-content: center;
   }
   
-  /* RODAPÉ */
+  /* Rodapé */
   footer {
     background-color: #1a1a1a;
     padding: 20px;
@@ -89,7 +92,7 @@
     color: #888;
   }
   
-  /* RESPONSIVIDADE NO DASHBOARD */
+  /* Responsividade no Dashboard */
   @media (max-width: 768px) {
     header {
       padding: 10px 20px;
