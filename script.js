@@ -1,24 +1,22 @@
 // script.js
 
-/**************************************
- *            VARIÁVEIS GLOBAIS
- **************************************/
+// Variáveis globais
 let currentSlide = 0;
 let slideInterval;
-let slides;
+let slides;        // Se tiver carrossel .slide
 let userLoggedIn = false;
 let userWallet = null;
 
-/**************************************
- *        VERIFICA WEB3/METAMASK
- **************************************/
+/**
+ * Verifica se Web3 (MetaMask) está disponível
+ */
 function isWeb3Available() {
   return typeof window.ethereum !== "undefined";
 }
 
-/**************************************
- *        NOTIFICAÇÃO RÁPIDA
- **************************************/
+/**
+ * Exibe notificações (opcional, se quiser criar uma notificação na tela)
+ */
 function showNotification(message, type = "info") {
   const notification = document.createElement("div");
   notification.className = `notification ${type}`;
@@ -27,50 +25,47 @@ function showNotification(message, type = "info") {
   setTimeout(() => notification.remove(), 3000);
 }
 
-/**************************************
- *   ALTERNAR SOM DO VÍDEO DE FUNDO
- **************************************/
+/**
+ * Alterna o som do vídeo de fundo
+ */
 function toggleVideoSound() {
   const video = document.getElementById("background-video");
   if (!video) return;
 
   video.muted = !video.muted;
-
   const muteButton = document.getElementById("muteButton");
   if (muteButton) {
     muteButton.textContent = video.muted ? "🔇" : "🔊";
   }
-
   showNotification(video.muted ? "Som desativado" : "Som ativado", "success");
 }
 
-/**************************************
- *         CONEXÃO COM CARTEIRA
- **************************************/
+/**
+ * Verifica se a carteira está conectada ao carregar
+ */
 async function checkWalletConnection() {
-  if (!isWeb3Available()) {
-    showNotification("Web3 não está disponível. Instale o MetaMask.", "error");
-    return;
-  }
-
-  try {
-    const accounts = await ethereum.request({ method: "eth_accounts" });
-    if (accounts.length > 0) {
-      userWallet = accounts[0];
-      userLoggedIn = true;
-      updateWalletInfo(userWallet);
-      showNotification("Carteira conectada: " + userWallet, "success");
-    } else {
-      showNotification("Nenhuma carteira conectada.", "warning");
+  if (isWeb3Available()) {
+    try {
+      const accounts = await ethereum.request({ method: "eth_accounts" });
+      if (accounts.length > 0) {
+        userWallet = accounts[0];
+        userLoggedIn = true;
+        updateWalletInfo(userWallet);
+        showNotification("Carteira conectada: " + userWallet, "success");
+      } else {
+        showNotification("Nenhuma carteira conectada.", "warning");
+      }
+    } catch (error) {
+      showNotification("Erro ao verificar carteira: " + error.message, "error");
     }
-  } catch (error) {
-    showNotification("Erro ao verificar carteira: " + error.message, "error");
+  } else {
+    showNotification("Web3 não está disponível. Instale o MetaMask.", "error");
   }
 }
 
-/**************************************
- * ATUALIZA INFORMAÇÕES DE CARTEIRA
- **************************************/
+/**
+ * Atualiza informações da carteira na tela (opcional)
+ */
 function updateWalletInfo(address) {
   const walletInfo = document.getElementById("walletInfo");
   if (walletInfo) {
@@ -78,9 +73,9 @@ function updateWalletInfo(address) {
   }
 }
 
-/**************************************
- *              LOGOUT
- **************************************/
+/**
+ * Logout da carteira
+ */
 function logout() {
   userLoggedIn = false;
   userWallet = null;
@@ -88,31 +83,33 @@ function logout() {
   setTimeout(() => window.location.href = "index.html", 1000);
 }
 
-/**************************************
- *   BOTÃO VOLTAR AO TOPO
- **************************************/
+/**
+ * Rolar ao topo
+ */
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-window.addEventListener("scroll", () => {
+/**
+ * Mostrar/ocultar botão 'back to top'
+ */
+window.addEventListener("scroll", function() {
   const backToTop = document.getElementById("backToTop");
   if (backToTop) {
     backToTop.style.display = window.scrollY > 300 ? "block" : "none";
   }
 });
 
-/**************************************
- *         CARROSSEL DE SLIDES
- **************************************/
+/**
+ * Carrossel (se houver slides com classe .slide)
+ */
 function initializeCarousel() {
   slides = document.querySelectorAll(".slide");
   if (slides.length > 0) {
     showSlide(currentSlide);
-    slideInterval = setInterval(nextSlide, 5000);
+    slideInterval = setInterval(nextSlide, 5000); // 5s
   }
 }
-
 function showSlide(index) {
   slides.forEach((slide, i) => {
     slide.classList.remove("active");
@@ -121,16 +118,15 @@ function showSlide(index) {
     }
   });
 }
-
 function nextSlide() {
   if (!slides || slides.length === 0) return;
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }
 
-/**************************************
- *     INICIALIZA GRÁFICOS (CHART.JS)
- **************************************/
+/**
+ * Inicializa gráficos (caso use Chart.js)
+ */
 function initializeCharts() {
   const ctx1 = document.getElementById("chartUtilizacao")?.getContext("2d");
   if (ctx1) {
@@ -164,9 +160,17 @@ function initializeCharts() {
   }
 }
 
-/**************************************
- *         AO CARREGAR A PÁGINA
- **************************************/
+/**
+ * Listener do botão de som
+ */
+const muteButton = document.getElementById("muteButton");
+if (muteButton) {
+  muteButton.addEventListener("click", toggleVideoSound);
+}
+
+/**
+ * Ao carregar a página
+ */
 window.onload = () => {
   checkWalletConnection();
   initializeCarousel();
