@@ -158,10 +158,10 @@
   .cards-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem; /* ou 30px */
-    justify-items: center; /* se quiser centralizar */
-    /* ... */
-  }  
+    gap: 2rem;          /* Espaçamento entre cards */
+    justify-items: center; 
+    align-items: start; /* Alinha os cards no topo (importante para altura uniforme) */
+  }
   
   /* CARDS */
   .card {
