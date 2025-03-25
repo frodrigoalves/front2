@@ -4,6 +4,8 @@
 let currentSlide = 0;
 let slideInterval;
 let slides;
+let userLoggedIn = false;
+let userWallet = null;
 
 // Verifica se o Web3 está disponível
 function isWeb3Available() {
