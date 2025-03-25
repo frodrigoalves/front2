@@ -1,0 +1,28 @@
+[
+    {
+      "title": "Lançamento da SingulAI Blog",
+      "date": "2025-05-20",
+      "summary": "Um breve overview sobre nossa nova página de notícias.",
+      "content": "Conteúdo completo do post #1...",
+      "image": "images/post1.jpg"
+    },
+    {
+      "title": "IA e Blockchain",
+      "date": "2025-05-15",
+      "summary": "Explorando os benefícios de combinar IA Generativa com segurança descentralizada.",
+      "content": "Conteúdo completo do post #2..."
+    },
+    {
+      "title": "Melhorias na Plataforma",
+      "date": "2025-05-12",
+      "summary": "Descubra as atualizações e melhorias lançadas para criadores de conteúdo.",
+      "content": "Conteúdo completo do post #3..."
+    },
+    {
+      "title": "Próximos Passos para a SingulAI",
+      "date": "2025-05-01",
+      "summary": "Saiba o que planejamos para o futuro em termos de legado digital.",
+      "content": "Conteúdo completo do post #4..."
+    }
+  ]
+  

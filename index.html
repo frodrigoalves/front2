@@ -29,13 +29,11 @@
     <nav>
       <ul>
         <li><a href="#hero">Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#sobre-e-tecnologias">Sobre</a></li>
         <li><a href="#contato">Contato</a></li>
-        <!-- Link para outra página (Dashboard) -->
         <li><a href="dashboard.html">Dashboard</a></li>
-        <!-- Exemplos de links para outras páginas caso existam -->
-        <!-- <li><a href="landpage.html">Landpage</a></li> -->
-        <!-- <li><a href="cadastro.html">Cadastro</a></li> -->
+        <!-- Se quiser link para o blog completo:
+        <li><a href="blog.html">Blog</a></li> -->
       </ul>
     </nav>
   </header>
@@ -48,6 +46,7 @@
         autoplay 
         loop 
         muted 
+        playsinline
         aria-label="Vídeo de fundo exibindo efeitos digitais"
       >
         <source src="videos/video3.mp4" type="video/mp4">
@@ -78,13 +77,12 @@
   </section>
 
   <!-- Conteúdo Principal -->
-<main>
+  <main>
 
-    <!-- Seção que agrupa "Sobre o Projeto" e "Tecnologias" -->
+    <!-- Seção Sobre e Tecnologias -->
     <section id="sobre-e-tecnologias" class="content-section">
       <h2>Sobre o Projeto & Tecnologias Utilizadas</h2>
       <div class="cards-wrapper">
-  
         <!-- Card 1: Sobre o Projeto -->
         <div class="card">
           <h3>Plataforma Inovadora</h3>
@@ -94,7 +92,7 @@
             de forma segura e eterna.
           </p>
         </div>
-  
+
         <!-- Card 2: Blockchain -->
         <div class="card">
           <h3>Blockchain</h3>
@@ -103,7 +101,7 @@
             para garantir a segurança e imutabilidade dos dados.
           </p>
         </div>
-  
+
         <!-- Card 3: IA Generativa -->
         <div class="card">
           <h3>IA Generativa</h3>
@@ -112,7 +110,7 @@
             oferecendo uma experiência única ao usuário.
           </p>
         </div>
-  
+
         <!-- Card 4: Autenticação Biométrica -->
         <div class="card">
           <h3>Autenticação Biométrica</h3>
@@ -121,10 +119,9 @@
             a autenticidade e segurança máxima para os usuários.
           </p>
         </div>
-  
-      </div> <!-- /.cards-wrapper -->
+      </div>
     </section>
-  
+
     <!-- Seção Economia do Token -->
     <section id="tokenomics" class="content-section">
       <h2>Economia do Token</h2>
@@ -138,9 +135,18 @@
         </div>
       </div>
     </section>
-  </main>  
 
-    <!-- Contato -->
+    <!-- Seção Blog: 3 Últimos Posts -->
+    <section class="content-section" id="blog-latest">
+      <h2>Últimas Notícias</h2>
+      <div id="latest-posts">
+        <!-- Carregado dinamicamente pelo script.js -> loadLatestPosts(3) -->
+      </div>
+      <!-- Caso deseje um link para a lista completa:
+      <a href="blog.html" class="view-all">Ver todos os posts</a> -->
+    </section>
+
+    <!-- Seção de Contato -->
     <section id="contato" class="content-section">
       <h2>Contato</h2>
       <p>
@@ -148,6 +154,7 @@
         <a href="mailto:contato@singulai.com">contato@singulai.com</a>
       </p>
     </section>
+
   </main>
 
   <!-- Rodapé -->
@@ -164,7 +171,7 @@
     ↑
   </button>
 
-  <!-- Script Principal -->
+  <!-- Script Principal (contendo loadLatestPosts) -->
   <script src="js/script.js"></script>
 </body>
 </html>

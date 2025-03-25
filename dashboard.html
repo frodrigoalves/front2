@@ -5,27 +5,23 @@
   <title>SingulAI - Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Ícones (Boxicons) -->
+  <!-- Boxicons (ícones) -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-  <!-- CSS do Dashboard -->
-  <!-- Ajuste o caminho se estiver em outra pasta -->
-  <link rel="stylesheet" href="dashboard.css">
+  <!-- CSS do Dashboard (pode ser o style.css se preferir unificar) -->
+  <link rel="stylesheet" href="css/dashboard.css">
 
-  <!-- Biblioteca de Gráficos (Chart.js) -->
+  <!-- Biblioteca de Gráficos (Chart.js), se quiser gráficos -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
   <!-- HEADER FIXO -->
   <header>
-    <div class="logo-container">
-      <!-- Ajuste o caminho da imagem conforme sua estrutura -->
-      <img src="images/logo.png" alt="Logotipo da SingulAI" class="logo">
-    </div>
+    <h1>SingulAI - Dashboard</h1>
     <nav>
       <ul>
-        <!-- Cada botão exibe uma seção do dashboard -->
+        <!-- Cada botão chama showSection('idDaSecao') para exibir a respectiva funcionalidade -->
         <li><button onclick="showSection('conectarCarteira')">Conectar Carteira</button></li>
         <li><button onclick="showSection('enviarMensagem')">Enviar Mensagem</button></li>
         <li><button onclick="showSection('legadoDigital')">Criar Legado</button></li>
@@ -39,75 +35,77 @@
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- UMA PEQUENA SEÇÃO HERO (opcional) -->
   <section class="hero" id="hero">
     <h1>Transforme seu Legado Digital</h1>
     <p>Armazene e envie mensagens seguras para o futuro.</p>
   </section>
 
-  <!-- SEÇÃO: CONECTAR CARTEIRA -->
-  <div class="content-container" id="conectarCarteira">
-    <h2>🔗 Conectar Carteira</h2>
-    <!-- Botão que chama a função connectWallet() no dashboard.js -->
-    <button onclick="connectWallet()">Conectar MetaMask</button>
-    <p id="walletAddress">Nenhuma carteira conectada</p>
-  </div>
-
-  <!-- SEÇÃO: ENVIO DE MENSAGENS -->
-  <div class="content-container" id="enviarMensagem" style="display:none;">
-    <h2>📩 Enviar Mensagem</h2>
-    <input type="text" id="msgRecipient" placeholder="Carteira do Destinatário">
-    <textarea id="msgContent" placeholder="Mensagem"></textarea>
-    <button onclick="enviarMensagem()">Enviar</button>
-  </div>
-
-  <!-- SEÇÃO: CRIAÇÃO DE LEGADO DIGITAL -->
-  <div class="content-container" id="legadoDigital" style="display:none;">
-    <h2>🏛 Criar Legado Digital</h2>
-    <input type="text" id="legacyHeir" placeholder="Carteira do Tutor/Herdeiro">
-    <textarea id="legacyDescription" placeholder="Descrição do Legado"></textarea>
-    <button onclick="criarLegado()">Criar</button>
-  </div>
-
-  <!-- SEÇÃO: AGENDAMENTO DE POSTAGEM -->
-  <div class="content-container" id="agendarPostagem" style="display:none;">
-    <h2>🕒 Agendar Postagem</h2>
-    <input type="text" id="postRecipient" placeholder="Carteira (opcional)">
-    <textarea id="postContent" placeholder="Conteúdo da Postagem"></textarea>
-    <input type="date" id="postDate">
-    <button onclick="agendarPostagem()">Agendar</button>
-  </div>
-
-  <!-- SEÇÃO: CRIAÇÃO DE NOVA CARTEIRA -->
-  <div class="content-container" id="novaCarteira" style="display:none;">
-    <h2>💼 Criar Nova Carteira</h2>
-    <button onclick="criarNovaCarteira()">Gerar Carteira</button>
-    <div id="resultadoCarteira"></div>
-  </div>
-
-  <!-- SEÇÃO: LISTAGEM DE MENSAGENS ENVIADAS -->
-  <div class="content-container" id="listagemMensagens" style="display:none;">
-    <h2>📜 Mensagens Enviadas</h2>
-    <ul id="messageList"></ul>
-  </div>
-
-  <!-- SEÇÃO: UPLOAD PARA IPFS -->
-  <div class="content-container" id="uploadIPFS" style="display:none;">
-    <h2>📂 Upload para IPFS</h2>
-    <input type="file" id="fileUpload">
-    <button onclick="uploadToIPFS()">Upload</button>
-    <p id="ipfsHash"></p>
-  </div>
-
-  <!-- SEÇÃO: ESTATÍSTICAS (GRÁFICOS) -->
-  <div class="content-container" id="stats" style="display:none;">
-    <h2>📊 Estatísticas</h2>
-    <div class="charts-container">
-      <!-- Canvas com tamanho menor -->
-      <canvas id="chartUtilizacao" width="300" height="200"></canvas>
-      <canvas id="chartAdocao" width="300" height="200"></canvas>
+  <!-- CONTEÚDO DO DASHBOARD: cada seção é exibida/ocultada via showSection() -->
+  <main>
+    <!-- SEÇÃO: CONECTAR CARTEIRA -->
+    <div class="content-container" id="conectarCarteira" style="display:none;">
+      <h2>🔗 Conectar Carteira</h2>
+      <button onclick="connectWallet()">Conectar MetaMask</button>
+      <p id="walletAddress">Nenhuma carteira conectada</p>
     </div>
-  </div>
+
+    <!-- SEÇÃO: ENVIO DE MENSAGENS -->
+    <div class="content-container" id="enviarMensagem" style="display:none;">
+      <h2>📩 Enviar Mensagem</h2>
+      <input type="text" id="msgRecipient" placeholder="Carteira do Destinatário">
+      <textarea id="msgContent" placeholder="Mensagem"></textarea>
+      <button onclick="enviarMensagem()">Enviar</button>
+    </div>
+
+    <!-- SEÇÃO: CRIAÇÃO DE LEGADO DIGITAL -->
+    <div class="content-container" id="legadoDigital" style="display:none;">
+      <h2>🏛 Criar Legado Digital</h2>
+      <input type="text" id="legacyHeir" placeholder="Carteira do Tutor/Herdeiro">
+      <textarea id="legacyDescription" placeholder="Descrição do Legado"></textarea>
+      <button onclick="criarLegado()">Criar</button>
+    </div>
+
+    <!-- SEÇÃO: AGENDAMENTO DE POSTAGEM -->
+    <div class="content-container" id="agendarPostagem" style="display:none;">
+      <h2>🕒 Agendar Postagem</h2>
+      <input type="text" id="postRecipient" placeholder="Carteira (opcional)">
+      <textarea id="postContent" placeholder="Conteúdo da Postagem"></textarea>
+      <input type="date" id="postDate">
+      <button onclick="agendarPostagem()">Agendar</button>
+    </div>
+
+    <!-- SEÇÃO: CRIAÇÃO DE NOVA CARTEIRA -->
+    <div class="content-container" id="novaCarteira" style="display:none;">
+      <h2>💼 Criar Nova Carteira</h2>
+      <button onclick="criarNovaCarteira()">Gerar Carteira</button>
+      <div id="resultadoCarteira"></div>
+    </div>
+
+    <!-- SEÇÃO: LISTAGEM DE MENSAGENS ENVIADAS -->
+    <div class="content-container" id="listagemMensagens" style="display:none;">
+      <h2>📜 Mensagens Enviadas</h2>
+      <ul id="messageList"></ul>
+    </div>
+
+    <!-- SEÇÃO: UPLOAD PARA IPFS -->
+    <div class="content-container" id="uploadIPFS" style="display:none;">
+      <h2>📂 Upload para IPFS</h2>
+      <input type="file" id="fileUpload">
+      <button onclick="uploadToIPFS()">Upload</button>
+      <p id="ipfsHash"></p>
+    </div>
+
+    <!-- SEÇÃO: ESTATÍSTICAS (GRÁFICOS) -->
+    <div class="content-container" id="stats" style="display:none;">
+      <h2>📊 Estatísticas</h2>
+      <!-- Canvas para gráficos (ex: Chart.js) -->
+      <div class="charts-container">
+        <canvas id="chartUtilizacao" width="300" height="200"></canvas>
+        <canvas id="chartAdocao" width="300" height="200"></canvas>
+      </div>
+    </div>
+  </main>
 
   <!-- RODAPÉ -->
   <footer>
@@ -115,7 +113,14 @@
   </footer>
 
   <!-- SCRIPT DO DASHBOARD -->
-  <!-- Ajuste o caminho se estiver em outra pasta (ex.: js/dashboard.js) -->
-  <script src="dashboard.js"></script>
+  <!-- Ajuste para "js/dashboard.js" ou outro nome que contenha as funções abaixo -->
+  <script src="js/dashboard.js"></script>
+  <!-- Exemplo: se seu dashboard.js não chamar initializeCharts() sozinho, você pode -->
+  <!-- <script>
+    window.onload = () => {
+      checkWalletConnectionDashboard();
+      initializeDashboardCharts();
+    };
+  </script> -->
 </body>
 </html>

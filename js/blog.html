@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SingulAI - Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS Principal (estilo do site) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- (Opcional) Ícone de Favicon -->
+  <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+
+  <!-- Cabeçalho (menu simples) -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal do Blog -->
+  <main>
+    <section class="content-section blog-container">
+      <h1>Blog da SingulAI</h1>
+      <p>Bem-vindo(a)! Aqui você encontra todas as nossas postagens.</p>
+
+      <!-- Div onde serão injetados os posts via JS -->
+      <div id="all-posts"></div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Script JS contendo a função loadAllPosts() -->
+  <!-- Altere para "js/script.js" se preferir centralizar tudo em script.js -->
+  <script src="js/main.js"></script>
+
+  <!-- Chamamos loadAllPosts() quando a página terminar de carregar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAllPosts();
+    });
+  </script>
+</body>
+</html>

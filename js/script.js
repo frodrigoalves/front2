@@ -1,24 +1,28 @@
-/* script.js */
-
-// Variáveis globais
+/************************************************
+ *                VARIÁVEIS GLOBAIS
+ ************************************************/
 let currentSlide = 0;
 let slideInterval;
 let slides;
 let userLoggedIn = false;
 let userWallet = null;
 
+// Caminho do arquivo JSON com as postagens
+const POSTS_JSON = "js/posts.json";
+
+/************************************************
+ *            FUNÇÕES GERAIS / META MASK
+ ************************************************/
+
 /**
- * Verifica se o Web3 está disponível (ex.: MetaMask)
- * @returns {boolean} - true se Web3/metamask estiver disponível, caso contrário false
+ * Verifica se Web3 (MetaMask) está disponível
  */
 function isWeb3Available() {
   return typeof window.ethereum !== "undefined";
 }
 
 /**
- * Exibe notificações personalizadas na tela
- * @param {string} message - Mensagem a ser exibida
- * @param {string} [type="info"] - Tipo de notificação (info, success, warning, error)
+ * Exibe notificações rápidas na tela (opcional)
  */
 function showNotification(message, type = "info") {
   const notification = document.createElement("div");
@@ -29,7 +33,7 @@ function showNotification(message, type = "info") {
 }
 
 /**
- * Alterna o som do vídeo de fundo (mudo <-> som)
+ * Alternar som do vídeo de fundo
  */
 function toggleVideoSound() {
   const video = document.getElementById("background-video");
@@ -44,7 +48,7 @@ function toggleVideoSound() {
 }
 
 /**
- * Verifica se o usuário já possui uma carteira conectada ao carregar a página
+ * Verifica se a carteira está conectada ao carregar
  */
 async function checkWalletConnection() {
   if (isWeb3Available()) {
@@ -67,8 +71,7 @@ async function checkWalletConnection() {
 }
 
 /**
- * Atualiza a exibição de informações da carteira na tela
- * @param {string} address - Endereço da carteira conectada
+ * Atualiza informações da carteira na tela (se existir elemento #walletInfo)
  */
 function updateWalletInfo(address) {
   const walletInfo = document.getElementById("walletInfo");
@@ -78,7 +81,7 @@ function updateWalletInfo(address) {
 }
 
 /**
- * Desconecta a carteira (logout) e redireciona para o index
+ * Logout da carteira
  */
 function logout() {
   userLoggedIn = false;
@@ -87,38 +90,30 @@ function logout() {
   setTimeout(() => window.location.href = "index.html", 1000);
 }
 
-/**
- * Botão de voltar ao topo (scroll suave)
- */
+/************************************************
+ *       ROLAR AO TOPO / BOTÃO BACK-TO-TOP
+ ************************************************/
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/**
- * Mostra ou oculta o botão de voltar ao topo baseado na rolagem
- */
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", () => {
   const backToTop = document.getElementById("backToTop");
   if (backToTop) {
     backToTop.style.display = window.scrollY > 300 ? "block" : "none";
   }
 });
 
-/**
- * Carrossel automático para textos ou depoimentos
- */
+/************************************************
+ *               CARROSSEL (OPCIONAL)
+ ************************************************/
 function initializeCarousel() {
   slides = document.querySelectorAll(".slide");
   if (slides.length > 0) {
-    showSlide(currentSlide);      // Exibe o primeiro slide
-    slideInterval = setInterval(nextSlide, 5000); // Troca de slide a cada 5s
+    showSlide(currentSlide);
+    slideInterval = setInterval(nextSlide, 5000);
   }
 }
-
-/**
- * Exibe um slide específico
- * @param {number} index - Índice do slide
- */
 function showSlide(index) {
   slides.forEach((slide, i) => {
     slide.classList.remove("active");
@@ -127,20 +122,15 @@ function showSlide(index) {
     }
   });
 }
-
-/**
- * Mostra o próximo slide
- */
 function nextSlide() {
   if (!slides || slides.length === 0) return;
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }
 
-/**
- * Inicializa gráficos usando a biblioteca Chart.js
- * (Certifique-se de incluir Chart.js no HTML ou de forma externa)
- */
+/************************************************
+ *          GRÁFICOS (CHART.JS) (OPCIONAL)
+ ************************************************/
 function initializeCharts() {
   const ctx1 = document.getElementById("chartUtilizacao")?.getContext("2d");
   if (ctx1) {
@@ -174,19 +164,105 @@ function initializeCharts() {
   }
 }
 
+/************************************************
+ *     FUNÇÕES DO BLOG (3 ÚLTIMOS POSTS)
+ ************************************************/
 /**
- * Listener para o botão de som do vídeo
+ * Busca as postagens a partir do arquivo POSTS_JSON
  */
+async function fetchPosts() {
+  const response = await fetch(POSTS_JSON);
+  const data = await response.json();
+  return data; // array de objetos
+}
+
+/**
+ * Carrega N últimos posts (para a página inicial)
+ * @param {number} limit - quantos posts exibir
+ */
+async function loadLatestPosts(limit) {
+  try {
+    const posts = await fetchPosts();
+    // Se posts já estiver do mais recente ao mais antigo,
+    // basta pegar o slice(0, limit).
+    // Se não estiver, você pode reordenar ou dar um reverse().
+    const latest = posts.slice(0, limit);
+
+    const container = document.getElementById("latest-posts");
+    if (!container) return;
+
+    latest.forEach(post => {
+      const card = createPostCard(post);
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Erro ao carregar últimos posts:", err);
+  }
+}
+
+/**
+ * Cria um elemento card para cada post
+ */
+function createPostCard(post) {
+  const card = document.createElement("div");
+  card.classList.add("post-card");
+
+  // Título
+  const title = document.createElement("h3");
+  title.textContent = post.title;
+  card.appendChild(title);
+
+  // Data formatada
+  const dateP = document.createElement("p");
+  dateP.classList.add("post-date");
+  dateP.textContent = formatDate(post.date);
+  card.appendChild(dateP);
+
+  // Resumo
+  const summary = document.createElement("p");
+  summary.classList.add("post-summary");
+  summary.textContent = post.summary;
+  card.appendChild(summary);
+
+  // Se houver imagem
+  if (post.image) {
+    const img = document.createElement("img");
+    img.src = post.image;
+    img.alt = post.title;
+    img.classList.add("post-image");
+    card.appendChild(img);
+  }
+
+  return card;
+}
+
+/**
+ * Formata data "2025-05-10" -> "10/05/2025"
+ */
+function formatDate(dateString) {
+  const [year, month, day] = dateString.split("-");
+  return `${day}/${month}/${year}`;
+}
+
+/************************************************
+ *          EVENTOS AO CARREGAR PÁGINA
+ ************************************************/
+window.onload = () => {
+  // Conexão de carteira
+  checkWalletConnection();
+
+  // Carrossel
+  initializeCarousel();
+
+  // Gráficos (se houver)
+  initializeCharts();
+
+  // Carrega 3 últimos posts do blog
+  loadLatestPosts(3);
+};
+
+// Se existir o botão mute, adiciona listener
 const muteButton = document.getElementById("muteButton");
 if (muteButton) {
   muteButton.addEventListener("click", toggleVideoSound);
 }
-
-/**
- * Inicialização ao carregar a página
- */
-window.onload = () => {
-  checkWalletConnection();
-  initializeCarousel();
-  initializeCharts();
-};
