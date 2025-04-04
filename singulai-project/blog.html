@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SingulAI - Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Boxicons (ícones) -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- CSS Global e Organizado -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="blog-container">
+      <h1>Blog da SingulAI</h1>
+      <div id="all-posts"><!-- JS insere aqui --></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAllPosts();
+    });
+  </script>
+</body>
+</html>

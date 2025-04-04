@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SingulAI - A Máquina do Tempo Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  <!-- Boxicons (ícones) -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- CSS Global e Organizado -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a href="#hero" class="skip-link" aria-label="Pular para o conteúdo principal">Ir para o conteúdo principal</a>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="Logotipo da SingulAI" class="logo" loading="lazy">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Início</a></li>
+        <li><a href="#sobre-e-tecnologias">Sobre</a></li>
+        <li><a href="#token">Token</a></li>
+        <li><a href="#blog-latest">Notícias</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="video-container">
+      <video id="background-video" autoplay loop muted playsinline aria-label="Vídeo de fundo exibindo efeitos digitais">
+        <source src="videos/video3.mp4" type="video/mp4">
+        Seu navegador não suporta o vídeo.
+      </video>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>SingulAI - A Máquina do Tempo Digital</h1>
+        <p>
+          A tecnologia que eterniza a essência humana, preservando memórias, legados e criações para gerações futuras.
+        </p>
+        <p>
+          Muito mais do que um avanço digital, é a singularidade da humanidade registrada para sempre em blockchain.
+        </p>
+        <button class="cta-button" id="muteButton" aria-label="Alternar Som do Vídeo">🔇</button>
+        <a href="dashboard.html" class="cta-button" aria-label="Acessar Dashboard da SingulAI">Explore Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre & Tecnologias -->
+  <main>
+    <section id="sobre-e-tecnologias" class="content-section">
+      <h2>Sobre o Projeto & Tecnologias Utilizadas</h2>
+      <p>A SingulAI é a fusão entre inovação tecnológica e a preservação da essência humana.</p>
+      <div class="cards-wrapper">
+        <div class="card">
+          <h3>Plataforma Inovadora</h3>
+          <p>União entre IA, blockchain e segurança digital para preservar legados eternamente.</p>
+        </div>
+        <div class="card">
+          <h3>Blockchain</h3>
+          <p>Baseada em Ethereum, Solana e Avalanche para imutabilidade e descentralização.</p>
+        </div>
+        <div class="card">
+          <h3>IA Generativa</h3>
+          <p>Criações autênticas e personalizadas com IA para preservar emoções e histórias.</p>
+        </div>
+        <div class="card">
+          <h3>Autenticação Biométrica</h3>
+          <p>Segurança máxima com autenticação multifatorial e biométrica.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Economia do Token -->
+    <section id="token" class="content-section">
+      <h2>Economia do Token</h2>
+      <p>
+        O SingulAI Token (SAT) é a chave para acessar, registrar e eternizar criações digitais, funcionando como unidade de valor simbólico e autenticação na rede.
+      </p>
+      <div class="cards-wrapper">
+        <div class="card">
+          <h3>Contrato Inteligente</h3>
+          <p>Automatização de heranças, mensagens e lançamentos digitais com segurança jurídica.</p>
+        </div>
+        <div class="card">
+          <h3>Economia Circular</h3>
+          <p>Parte dos tokens retorna via staking e participação dos usuários.</p>
+        </div>
+        <div class="card">
+          <h3>Fundação SingulAI</h3>
+          <p>Tokens direcionados à manutenção da plataforma e preservação do projeto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Últimas Notícias -->
+    <section class="content-section" id="blog-latest">
+      <h2>Últimas Notícias</h2>
+      <div id="latest-posts">
+        <!-- Conteúdo dinâmico via script.js -->
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="content-section">
+      <h2>Contato</h2>
+      <p>Entre em contato: <a href="mailto:contato@singulai.com">contato@singulai.com</a></p>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Botão de voltar ao topo -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo da página">↑</button>
+
+  <!-- Script principal -->
+  <script src="js/script.js"></script>
+</body>
+</html>

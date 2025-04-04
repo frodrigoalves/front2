@@ -1,0 +1,35 @@
+/* CABEÇALHO FIXO PADRONIZADO */
+header {
+    width: 100%;
+    background: rgba(26, 26, 26, 0.95); /* leve ajuste na opacidade para melhor contraste */
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0; /* incluído explicitamente */
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+header:hover {
+    background: rgba(26, 26, 26, 1);
+}
+
+/* RODAPÉ PADRONIZADO */
+footer {
+    background-color: #1a1a1a;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+}
+
+/* Ajuste rápido para a logo */
+.logo {
+    width: auto;
+    height: 60px; /* ajuste conforme necessário */
+    max-width: 200px;
+  }
+  

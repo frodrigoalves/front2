@@ -1,0 +1,52 @@
+/* BOTÕES PADRONIZADOS */
+.cta-button, .back-to-top, button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* adicionado para remover bordas inconsistentes */
+}
+
+.cta-button:hover, .back-to-top:hover, button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* CARDS PADRONIZADOS */
+.card {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* NOTIFICAÇÕES PADRONIZADAS */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    opacity: 0.95;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    color: #ffffff;
+}
+
+.notification.success { background: #28a745; }
+.notification.warning { background: #ffc107; color: #000000; }
+.notification.error { background: #dc3545; }
+.notification.info { background: #333333; }

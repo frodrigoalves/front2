@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SingulAI - A Máquina do Tempo Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  <!-- Boxicons + AOS -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Estilos Globais -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Estilo Glass adicional -->
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <a href="#hero" class="skip-link">Ir para o conteúdo principal</a>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo-container">
+      <img src="images/logo.png" alt="Logotipo da SingulAI" class="logo" loading="lazy">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Início</a></li>
+        <li><a href="#sobre-e-tecnologias">Sobre</a></li>
+        <li><a href="#token">Token</a></li>
+        <li><a href="#blog-latest">Notícias</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="video-container">
+      <video id="background-video" autoplay loop muted playsinline>
+        <source src="videos/video3.mp4" type="video/mp4">
+      </video>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1 class="glow-effect">SingulAI - A Máquina do Tempo Digital</h1>
+        <p>
+          A tecnologia que eterniza a essência humana, preservando memórias, legados e criações para gerações futuras.
+        </p>
+        <p>
+          Muito mais do que um avanço digital, é a singularidade da humanidade registrada para sempre em blockchain.
+        </p>
+        <button class="cta-button glow-effect" id="muteButton">🔇</button>
+        <a href="dashboard.html" class="cta-button glow-effect">Explore Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre & Tecnologias -->
+  <main>
+    <section id="sobre-e-tecnologias" class="content-section">
+      <h2 class="glow-effect">Sobre o Projeto & Tecnologias Utilizadas</h2>
+      <p>A SingulAI é a fusão entre inovação tecnológica e a preservação da essência humana.</p>
+      <div class="cards-wrapper">
+        <div class="card glass" data-aos="fade-up">
+          <h3>Plataforma Inovadora</h3>
+          <p>União entre IA, blockchain e segurança digital para preservar legados eternamente.</p>
+        </div>
+        <div class="card glass" data-aos="fade-up" data-aos-delay="100">
+          <h3>Blockchain</h3>
+          <p>Baseada em Ethereum, Solana e Avalanche para imutabilidade e descentralização.</p>
+        </div>
+        <div class="card glass" data-aos="fade-up" data-aos-delay="200">
+          <h3>IA Generativa</h3>
+          <p>Criações autênticas e personalizadas com IA para preservar emoções e histórias.</p>
+        </div>
+        <div class="card glass" data-aos="fade-up" data-aos-delay="300">
+          <h3>Autenticação Biométrica</h3>
+          <p>Segurança máxima com autenticação multifatorial e biométrica.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Token -->
+    <section id="token" class="content-section">
+      <h2 class="glow-effect">Economia do Token</h2>
+      <p>
+        O SingulAI Token (SAT) é a chave para acessar, registrar e eternizar criações digitais.
+      </p>
+      <div class="cards-wrapper">
+        <div class="card glass" data-aos="fade-right">
+          <h3>Contrato Inteligente</h3>
+          <p>Automatização de heranças e mensagens com segurança jurídica.</p>
+        </div>
+        <div class="card glass" data-aos="fade-right" data-aos-delay="100">
+          <h3>Economia Circular</h3>
+          <p>Parte dos tokens retorna via staking e participação.</p>
+        </div>
+        <div class="card glass" data-aos="fade-right" data-aos-delay="200">
+          <h3>Fundação SingulAI</h3>
+          <p>Tokens para manutenção e preservação do projeto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Últimas Notícias -->
+    <section id="blog-latest" class="content-section">
+      <h2 class="glow-effect">Últimas Notícias</h2>
+      <div id="latest-posts"><!-- Populado por script.js --></div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="content-section">
+      <h2 class="glow-effect">Contato</h2>
+      <p>Fale com a gente: <a href="mailto:contato@singulai.com">contato@singulai.com</a></p>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 SingulAI. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Botão voltar ao topo -->
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script src="js/script.js"></script>
+  <script type="module">
+    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
+  
+    Typebot.initBubble({
+      typebot: "avatar-singulai",
+      theme: {
+        button: {
+          backgroundColor: "#080d49",
+          customIconSrc:
+            "https://s3.typebot.io/public/workspaces/cm5deo5xo000ey1sgrlf9c78l/typebots/cm90xbxom000614igq589qpl0/bubble-icon?v=1743753652585",
+        },
+        chatWindow: {
+          backgroundColor: "#000000",
+        },
+      },
+    });
+  </script>  
+</body>
+</html>

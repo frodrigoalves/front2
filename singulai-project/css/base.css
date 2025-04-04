@@ -1,0 +1,18 @@
+/* RESET BÁSICO PADRONIZADO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* CONFIGURAÇÃO GERAL DO BODY */
+body {
+    background-color: #101010;
+    color: #ffffff;
+    text-align: center;
+    overflow-x: hidden;
+    padding-top: 100px; /* Corrigido para corresponder exatamente ao header fixo */
+}

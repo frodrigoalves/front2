@@ -1,0 +1,14 @@
+/* ANIMAÇÃO GLOW OTIMIZADA */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 8px #007bff, 0 0 15px #007bff;
+    }
+    to {
+        text-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff;
+    }
+}
+
+/* CLASSE OPCIONAL PARA REUTILIZAR */
+.glow-effect {
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
