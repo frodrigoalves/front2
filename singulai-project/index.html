@@ -139,26 +139,20 @@
   <!-- Botão voltar ao topo -->
   <button class="back-to-top" id="backToTop">↑</button>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init();</script>
-  <script src="js/script.js"></script>
-  <script type="module">
-    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js'
-  
-    Typebot.initBubble({
-      typebot: "avatar-singulai",
-      theme: {
-        button: {
-          backgroundColor: "#080d49",
-          customIconSrc:
-            "https://s3.typebot.io/public/workspaces/cm5deo5xo000ey1sgrlf9c78l/typebots/cm90xbxom000614igq589qpl0/bubble-icon?v=1743753652585",
-        },
-        chatWindow: {
-          backgroundColor: "#000000",
-        },
-      },
-    });
-  </script>  
-</body>
-</html>
+   <!-- Scripts -->
+   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+   <script>AOS.init();</script>
+   <script src="js/script.js"></script>
+ 
+   <!-- Typebot - Modo Popup -->
+   <script type="module">
+     import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
+ 
+     Typebot.initPopup({
+       typebot: "avatar-singulai",
+       autoShowDelay: 4000
+     });
+   </script>
+ </body>
+ </html>
+ 
